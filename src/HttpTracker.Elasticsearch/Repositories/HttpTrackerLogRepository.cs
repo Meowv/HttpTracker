@@ -15,14 +15,33 @@ namespace HttpTracker.Repositories
 
         protected override string IndexName { get; }
 
-        public Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, DateTime date, int page, int limit)
+        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, DateTime date, int page, int limit)
         {
-            throw new NotImplementedException();
+            var response = new HttpTrackerResponse<PagedList<HttpTrackerLog>>();
+
+
+            return response;
         }
 
-        public Task<HttpTrackerResponse> InsertAsync(HttpTrackerLog httpTrackerLog)
+        public async Task<HttpTrackerResponse> InsertAsync(HttpTrackerLog httpTrackerLog)
         {
-            throw new NotImplementedException();
+            var response = new HttpTrackerResponse();
+            if (httpTrackerLog == null)
+            {
+                response.IsFailed("HttpTrackerLog is null");
+                return response;
+            }
+
+            try
+            {
+                await Client.IndexAsync(httpTrackerLog, x => x.Index(IndexName));
+            }
+            catch (Exception ex)
+            {
+                response.IsFailed(ex);
+            }
+
+            return response;
         }
     }
 }

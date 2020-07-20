@@ -13,6 +13,6 @@ namespace HttpTracker
 
         protected abstract string IndexName { get; }
 
-        protected IElasticClient GetElasticClient => _elasticsearchProvider.GetClient();
+        protected IElasticClient Client => _elasticsearchProvider.GetClient();
     }
 }
