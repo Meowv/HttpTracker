@@ -21,11 +21,6 @@ namespace HttpTracker
         public string YearMonth { get; set; }
 
         /// <summary>
-        /// 来源
-        /// </summary>
-        public string Source { get; set; }
-
-        /// <summary>
         /// 类型 <see cref="Types"/>
         /// </summary>
         public string Type { get; set; }
