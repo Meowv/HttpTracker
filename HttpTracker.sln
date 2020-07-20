@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30309.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker", "src\HttpTracker\HttpTracker.csproj", "{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Domain", "src\HttpTracker.Domain\HttpTracker.Domain.csproj", "{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application", "src\HttpTracker.Application\HttpTracker.Application.csproj", "{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.EntityFrameworkCore", "src\HttpTracker.EntityFrameworkCore\HttpTracker.EntityFrameworkCore.csproj", "{B8D80212-D7B1-47E3-9A7E-02A55640E359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MongoDb", "src\HttpTracker.MongoDb\HttpTracker.MongoDb.csproj", "{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Elasticsearch", "src\HttpTracker.Elasticsearch\HttpTracker.Elasticsearch.csproj", "{FBD68B65-EDFB-4C19-B6B3-D642778C281A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application.Contracts", "src\HttpTracker.Application.Contracts\HttpTracker.Application.Contracts.csproj", "{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application.EventBus", "src\HttpTracker.Application.EventBus\HttpTracker.Application.EventBus.csproj", "{792B68F0-322D-4880-8995-CA37F5B245D2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{BED8E6A8-7158-4661-BF5E-BE8C6D953AD6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{DFE18D98-2049-483D-9F2B-5228FE6C00A4}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		common.props = common.props
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D80212-D7B1-47E3-9A7E-02A55640E359}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D80212-D7B1-47E3-9A7E-02A55640E359}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D80212-D7B1-47E3-9A7E-02A55640E359}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D80212-D7B1-47E3-9A7E-02A55640E359}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD68B65-EDFB-4C19-B6B3-D642778C281A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD68B65-EDFB-4C19-B6B3-D642778C281A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD68B65-EDFB-4C19-B6B3-D642778C281A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD68B65-EDFB-4C19-B6B3-D642778C281A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792B68F0-322D-4880-8995-CA37F5B245D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792B68F0-322D-4880-8995-CA37F5B245D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792B68F0-322D-4880-8995-CA37F5B245D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792B68F0-322D-4880-8995-CA37F5B245D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
+	EndGlobalSection
+EndGlobal
