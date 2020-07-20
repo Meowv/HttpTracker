@@ -7,19 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker", "src\HttpTrac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Domain", "src\HttpTracker.Domain\HttpTracker.Domain.csproj", "{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application", "src\HttpTracker.Application\HttpTracker.Application.csproj", "{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Application", "src\HttpTracker.Application\HttpTracker.Application.csproj", "{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.EntityFrameworkCore", "src\HttpTracker.EntityFrameworkCore\HttpTracker.EntityFrameworkCore.csproj", "{B8D80212-D7B1-47E3-9A7E-02A55640E359}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.EntityFrameworkCore", "src\HttpTracker.EntityFrameworkCore\HttpTracker.EntityFrameworkCore.csproj", "{B8D80212-D7B1-47E3-9A7E-02A55640E359}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MongoDb", "src\HttpTracker.MongoDb\HttpTracker.MongoDb.csproj", "{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.MongoDb", "src\HttpTracker.MongoDb\HttpTracker.MongoDb.csproj", "{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Elasticsearch", "src\HttpTracker.Elasticsearch\HttpTracker.Elasticsearch.csproj", "{FBD68B65-EDFB-4C19-B6B3-D642778C281A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Elasticsearch", "src\HttpTracker.Elasticsearch\HttpTracker.Elasticsearch.csproj", "{FBD68B65-EDFB-4C19-B6B3-D642778C281A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application.Contracts", "src\HttpTracker.Application.Contracts\HttpTracker.Application.Contracts.csproj", "{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Application.Contracts", "src\HttpTracker.Application.Contracts\HttpTracker.Application.Contracts.csproj", "{A913898E-9324-4EAA-A0DF-1349BB2B6E5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Application.EventBus", "src\HttpTracker.Application.EventBus\HttpTracker.Application.EventBus.csproj", "{792B68F0-322D-4880-8995-CA37F5B245D2}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api", "api", "{BED8E6A8-7158-4661-BF5E-BE8C6D953AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Application.EventBus", "src\HttpTracker.Application.EventBus\HttpTracker.Application.EventBus.csproj", "{792B68F0-322D-4880-8995-CA37F5B245D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}"
 EndProject
@@ -31,6 +29,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dashboard", "dashboard", "{3B048DD8-CDD3-4F6A-A324-6EB13F79BA94}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "storage", "storage", "{C5E3810D-5CA5-49F4-9F19-62523B4655D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B8D80212-D7B1-47E3-9A7E-02A55640E359} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{FBD68B65-EDFB-4C19-B6B3-D642778C281A} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
