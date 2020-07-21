@@ -105,6 +105,9 @@ namespace HttpTracker.Repositories
             {
                 var collection = Database.GetCollection<HttpTrackerLog>(CollectionName);
 
+                // 解决时区问题
+                httpTrackerLog.CreationTime = DateTime.SpecifyKind(httpTrackerLog.CreationTime, DateTimeKind.Utc);
+
                 await collection.InsertOneAsync(httpTrackerLog);
             }
             catch (Exception ex)
