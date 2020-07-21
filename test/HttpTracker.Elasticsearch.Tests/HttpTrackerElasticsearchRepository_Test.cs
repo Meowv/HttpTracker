@@ -73,5 +73,20 @@ namespace HttpTracker.Elasticsearch.Tests
 
             Assert.True(response.Success);
         }
+
+        [Fact]
+        public async Task SearchAsync()
+        {
+            var factory = Services.BuildServiceProvider().GetRequiredService<IHttpTrackerLogRepositoryFactory>();
+            var repository = factory.CreateInstance(yearMonth);
+
+            Assert.NotNull(repository);
+
+            var response = await repository.SearchAsync(type: "", keyword: "", page: 1, limit: 20);
+
+            Assert.True(response.Success);
+            Assert.True(response.Result.Total > 0);
+            Assert.NotEmpty(response.Result.Item);
+        }
     }
 }
