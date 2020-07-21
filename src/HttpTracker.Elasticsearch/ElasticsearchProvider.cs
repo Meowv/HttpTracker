@@ -18,7 +18,7 @@ namespace HttpTracker
 
         public IElasticClient GetClient()
         {
-            if (Options.Nodes.Count() == 0)
+            if (Options.Nodes == null)
                 throw new Exception("Elasticsearch 配置有误，请检查。");
 
             ConnectionSettings connectionSettings;

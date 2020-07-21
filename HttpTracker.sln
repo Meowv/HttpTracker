@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "storage", "storage", "{C5E3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{E29F018D-BC9D-4AB7-B1AE-FD0345DB5757}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Elasticsearch.Tests", "test\HttpTracker.Elasticsearch.Tests\HttpTracker.Elasticsearch.Tests.csproj", "{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{792B68F0-322D-4880-8995-CA37F5B245D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{792B68F0-322D-4880-8995-CA37F5B245D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{792B68F0-322D-4880-8995-CA37F5B245D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{B8D80212-D7B1-47E3-9A7E-02A55640E359} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{3E2EC6C1-ECA3-4485-BEDC-4090412CEEB4} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{FBD68B65-EDFB-4C19-B6B3-D642778C281A} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
