@@ -1,4 +1,4 @@
-﻿using HttpTracker.Domain.Data;
+﻿using System;
 
 namespace HttpTracker.Dto
 {
@@ -37,6 +37,6 @@ namespace HttpTracker.Dto
         /// <summary>
         /// 创建时间
         /// </summary>
-        public string CreationTime { get; set; }
+        public DateTime CreationTime { get; set; }
     }
 }

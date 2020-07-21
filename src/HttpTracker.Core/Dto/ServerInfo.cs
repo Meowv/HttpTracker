@@ -1,11 +1,11 @@
-﻿namespace HttpTracker.Domain.Data
+﻿namespace HttpTracker.Dto
 {
     public class ServerInfo
     {
         /// <summary>
         /// 服务名称
         /// </summary>
-        public string Name { get; set; }
+        public string ServerName { get; set; }
 
         /// <summary>
         /// 进程Id

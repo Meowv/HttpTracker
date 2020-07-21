@@ -1,4 +1,4 @@
-﻿namespace HttpTracker.Domain.Data
+﻿namespace HttpTracker.Dto
 {
     public class RequestInfo
     {
@@ -40,7 +40,7 @@
         /// <summary>
         /// Request Body
         /// </summary>
-        public string Body { get; set; }
+        public string RequestBody { get; set; }
 
         /// <summary>
         /// Cookies

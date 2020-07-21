@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HttpTracker.Dto.Params
 {
-    public class SearchInput
+    public class QueryInput
     {
         /// <summary>
         /// 类型
@@ -19,12 +19,12 @@ namespace HttpTracker.Dto.Params
         /// 页码
         /// </summary>
         [Range(1, int.MaxValue)]
-        public int PageIndex { get; set; } = 1;
+        public int Page { get; set; } = 1;
 
         /// <summary>
         /// 限制条数
         /// </summary>
         [Range(1, 100)]
-        public int PageSize { get; set; } = 20;
+        public int Limit { get; set; } = 20;
     }
 }

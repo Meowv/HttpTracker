@@ -1,19 +1,19 @@
-﻿namespace HttpTracker.Domain.Data
+﻿namespace HttpTracker.Dto
 {
     public class ExceptionInfo
     {
         /// <summary>
-        /// 错误类型
+        /// 异常类型
         /// </summary>
-        public string Type { get; set; }
+        public string ExceptionType { get; set; }
 
         /// <summary>
-        /// 错误消息
+        /// 异常消息
         /// </summary>
         public string Message { get; set; }
 
         /// <summary>
-        /// 错误的堆栈跟踪
+        /// 异常的堆栈跟踪
         /// </summary>
         public string StackTrace { get; set; }
     }

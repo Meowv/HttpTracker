@@ -19,7 +19,7 @@ namespace HttpTracker.Repositories
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(SearchInput input);
+        Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(QueryInput input);
 
         /// <summary>
         /// 插入一条HTTP请求跟踪日志数据

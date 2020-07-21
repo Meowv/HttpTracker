@@ -1,4 +1,4 @@
-﻿namespace HttpTracker.Domain.Data
+﻿namespace HttpTracker.Dto
 {
     public class ResponseInfo
     {
@@ -10,6 +10,6 @@
         /// <summary>
         /// Response Body
         /// </summary>
-        public string Body { get; set; }
+        public string ResponseBody { get; set; }
     }
 }
