@@ -1,4 +1,5 @@
 ﻿using HttpTracker.Options;
+using HttpTracker.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -18,6 +19,9 @@ namespace HttpTracker.Elasticsearch.Tests
             {
                 x.Nodes = new string[] { "http://127.0.0.1:9200" };
             });
+
+            Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
+            Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
 
             var date = DateTimeOffset.UtcNow;
 

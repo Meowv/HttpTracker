@@ -8,8 +8,6 @@ namespace HttpTracker.Elasticsearch.Tests
         [Fact]
         public void GetClient()
         {
-            Services.AddTransient<IElasticsearchProvider, ElasticsearchProvider>();
-
             var provider = Services.BuildServiceProvider().GetRequiredService<IElasticsearchProvider>();
             var client = provider.GetClient();
 
