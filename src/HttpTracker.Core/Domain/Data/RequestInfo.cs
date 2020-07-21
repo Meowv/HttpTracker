@@ -1,4 +1,4 @@
-﻿namespace HttpTracker.Data
+﻿namespace HttpTracker.Domain.Data
 {
     public class RequestInfo
     {

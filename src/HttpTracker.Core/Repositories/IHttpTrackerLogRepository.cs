@@ -1,4 +1,5 @@
-﻿using HttpTracker.Response;
+﻿using HttpTracker.Domain;
+using HttpTracker.Response;
 using System.Threading.Tasks;
 
 namespace HttpTracker.Repositories

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HttpTracker.Data.Collections
+namespace HttpTracker.Domain.Data
 {
     public class DataDictionary : Dictionary<string, object>
     {

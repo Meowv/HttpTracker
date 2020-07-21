@@ -1,4 +1,5 @@
-﻿using HttpTracker.Options;
+﻿using HttpTracker.Domain;
+using HttpTracker.Options;
 using HttpTracker.Response;
 using Nest;
 using System;

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker", "src\HttpTracker\HttpTracker.csproj", "{3774BEBA-0BB8-4C17-A421-B6183F7E11A1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Domain", "src\HttpTracker.Domain\HttpTracker.Domain.csproj", "{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Core", "src\HttpTracker.Core\HttpTracker.Core.csproj", "{B0BBCCFF-97D6-423B-ABF5-ACC8FFBAD986}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Application", "src\HttpTracker.Application\HttpTracker.Application.csproj", "{24D5A21C-B4DB-4A2B-80E1-B854713A33C8}"
 EndProject
@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "storage", "storage", "{C5E3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{E29F018D-BC9D-4AB7-B1AE-FD0345DB5757}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Elasticsearch.Tests", "test\HttpTracker.Elasticsearch.Tests\HttpTracker.Elasticsearch.Tests.csproj", "{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Elasticsearch.Tests", "test\HttpTracker.Elasticsearch.Tests\HttpTracker.Elasticsearch.Tests.csproj", "{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

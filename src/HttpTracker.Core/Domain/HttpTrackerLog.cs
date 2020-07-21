@@ -1,16 +1,13 @@
-﻿using HttpTracker.Data.Collections;
+﻿using HttpTracker.Domain.Data;
 using System;
 
-namespace HttpTracker
+namespace HttpTracker.Domain
 {
-    public partial class HttpTrackerLog
+    public partial class HttpTrackerLog : IData
     {
         public HttpTrackerLog()
         {
-            var date = DateTimeOffset.UtcNow;
-
-            YearMonth = $"{date.Year}_{date.Month}";
-            CreationTime = date;
+            CreationTime = DateTimeOffset.UtcNow;
 
             Data = new DataDictionary();
         }

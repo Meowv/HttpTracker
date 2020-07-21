@@ -1,4 +1,4 @@
-﻿namespace HttpTracker
+﻿namespace HttpTracker.Domain
 {
     public partial class HttpTrackerLog
     {

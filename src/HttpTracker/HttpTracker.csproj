@@ -14,8 +14,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.6" />
-    
-    <ProjectReference Include="..\HttpTracker.Domain\HttpTracker.Domain.csproj" />
+
+    <ProjectReference Include="..\HttpTracker.Core\HttpTracker.Core.csproj" />
   </ItemGroup>
   
 </Project>

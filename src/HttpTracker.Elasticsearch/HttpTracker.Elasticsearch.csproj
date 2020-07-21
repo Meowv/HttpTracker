@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\common.props" />
 
@@ -10,8 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.6" />
     <PackageReference Include="NEST" Version="7.8.1" />
-
-    <ProjectReference Include="..\HttpTracker.Domain\HttpTracker.Domain.csproj" />
+    
+    <ProjectReference Include="..\HttpTracker.Core\HttpTracker.Core.csproj" />
   </ItemGroup>
 
 </Project>

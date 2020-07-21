@@ -1,4 +1,5 @@
-﻿using HttpTracker.Data;
+﻿using HttpTracker.Domain;
+using HttpTracker.Domain.Data;
 using HttpTracker.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
