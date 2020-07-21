@@ -1,4 +1,6 @@
 ﻿using HttpTracker.Domain;
+using HttpTracker.Dto;
+using HttpTracker.Dto.Params;
 using HttpTracker.Options;
 using HttpTracker.Response;
 using MongoDB.Driver;
@@ -28,27 +30,27 @@ namespace HttpTracker.Repositories
             return await Task.FromResult(new HttpTrackerResponse());
         }
 
-        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit)
+        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(SearchInput input)
         {
-            var response = new HttpTrackerResponse<PagedList<HttpTrackerLog>>();
+            var response = new HttpTrackerResponse<PagedList<HttpTrackerLogDto>>();
 
             var collection = Database.GetCollection<HttpTrackerLog>(CollectionName);
 
-            var query = collection.AsQueryable();
+            //var query = collection.AsQueryable();
 
-            if (string.IsNullOrEmpty(type))
-            {
-                query = query.Where(x => x.Type.Contains(type));
-            }
-            if (string.IsNullOrEmpty(keyword))
-            {
-                query = query.Where(x => x.Description.Contains(keyword));
-            }
+            //if (string.IsNullOrEmpty(type))
+            //{
+            //    query = query.Where(x => x.Type.Contains(type));
+            //}
+            //if (string.IsNullOrEmpty(keyword))
+            //{
+            //    query = query.Where(x => x.Description.Contains(keyword));
+            //}
 
-            var total = await query.CountAsync();
-            var list = await query.OrderByDescending(x => x.CreationTime).Take((page - 1) * limit).Skip(limit).ToListAsync();
+            //var total = await query.CountAsync();
+            //var list = await query.OrderByDescending(x => x.CreationTime).Take((page - 1) * limit).Skip(limit).ToListAsync();
 
-            response.IsSuccess(new PagedList<HttpTrackerLog>(total, list));
+            //response.IsSuccess(new PagedList<HttpTrackerLog>(total, list));
             return response;
         }
 

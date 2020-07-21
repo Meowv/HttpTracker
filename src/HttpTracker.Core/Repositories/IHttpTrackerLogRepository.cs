@@ -1,4 +1,6 @@
 ﻿using HttpTracker.Domain;
+using HttpTracker.Dto;
+using HttpTracker.Dto.Params;
 using HttpTracker.Response;
 using System.Threading.Tasks;
 
@@ -15,12 +17,9 @@ namespace HttpTracker.Repositories
         /// <summary>
         /// 按条件查询HTTP请求跟踪日志数据
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="keyword"></param>
-        /// <param name="page"></param>
-        /// <param name="limit"></param>
+        /// <param name="input"></param>
         /// <returns></returns>
-        Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit);
+        Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(SearchInput input);
 
         /// <summary>
         /// 插入一条HTTP请求跟踪日志数据
