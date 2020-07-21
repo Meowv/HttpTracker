@@ -1,6 +1,8 @@
 ﻿using HttpTracker.Domain;
 using HttpTracker.Options;
 using HttpTracker.Response;
+using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System;
 using System.Threading.Tasks;
 
@@ -26,9 +28,28 @@ namespace HttpTracker.Repositories
             return await Task.FromResult(new HttpTrackerResponse());
         }
 
-        public Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit)
+        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit)
         {
-            throw new NotImplementedException();
+            var response = new HttpTrackerResponse<PagedList<HttpTrackerLog>>();
+
+            var collection = Database.GetCollection<HttpTrackerLog>(CollectionName);
+
+            var query = collection.AsQueryable();
+
+            if (string.IsNullOrEmpty(type))
+            {
+                query = query.Where(x => x.Type.Contains(type));
+            }
+            if (string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(x => x.Description.Contains(keyword));
+            }
+
+            var total = await query.CountAsync();
+            var list = await query.OrderByDescending(x => x.CreationTime).Take((page - 1) * limit).Skip(limit).ToListAsync();
+
+            response.IsSuccess(new PagedList<HttpTrackerLog>(total, list));
+            return response;
         }
 
         public async Task<HttpTrackerResponse> InsertAsync(HttpTrackerLog httpTrackerLog)
