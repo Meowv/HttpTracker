@@ -22,7 +22,7 @@ namespace HttpTracker.Options
         /// <summary>
         /// 索引前缀
         /// </summary>
-        public string IndexPrefix { get; set; }
+        public string IndexPrefix { get; set; } = "meowv";
 
         public HttpTrackerElasticsearchOptions Value => this;
     }

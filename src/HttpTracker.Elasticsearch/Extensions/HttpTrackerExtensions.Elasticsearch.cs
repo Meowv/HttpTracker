@@ -1,4 +1,5 @@
 ﻿using HttpTracker.Options;
+using HttpTracker.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -25,6 +26,8 @@ namespace HttpTracker.Extensions
         internal static IHttpTrackerBuilder UseElasticsearchService(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
+            builder.Services.AddSingleton<HttpTrackerLogRepositoryFactory>();
+            builder.Services.AddSingleton<IHttpTrackerLogRepository, HttpTrackerLogRepository>();
 
             return builder;
         }

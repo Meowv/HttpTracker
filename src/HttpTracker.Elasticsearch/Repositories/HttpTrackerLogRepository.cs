@@ -1,4 +1,5 @@
-﻿using HttpTracker.Response;
+﻿using HttpTracker.Options;
+using HttpTracker.Response;
 using Nest;
 using System;
 using System.Collections.Generic;
@@ -9,11 +10,9 @@ namespace HttpTracker.Repositories
 {
     public class HttpTrackerLogRepository : ElasticsearchRepositoryBase, IHttpTrackerLogRepository
     {
-        public HttpTrackerLogRepository(IElasticsearchProvider elasticsearchProvider) : base(elasticsearchProvider)
+        public HttpTrackerLogRepository(IElasticsearchProvider elasticsearchProvider, HttpTrackerElasticsearchOptions options, string yearMonth) : base(elasticsearchProvider)
         {
-            var date = DateTimeOffset.UtcNow;
-
-            IndexName = $"{date.Year}_{date.Month}";
+            IndexName = $"{options.IndexPrefix}_{IndexConsts.IndexNames.HttpTrackerLog}_{yearMonth}";
         }
 
         protected override string IndexName { get; }
