@@ -7,6 +7,12 @@ namespace HttpTracker.Repositories
     public interface IHttpTrackerLogRepository
     {
         /// <summary>
+        /// 初始化数据库
+        /// </summary>
+        /// <returns></returns>
+        Task<HttpTrackerResponse> InitAsync();
+
+        /// <summary>
         /// 按条件查询HTTP请求跟踪日志数据
         /// </summary>
         /// <param name="type"></param>

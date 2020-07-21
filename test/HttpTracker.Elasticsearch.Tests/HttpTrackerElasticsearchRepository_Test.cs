@@ -15,7 +15,7 @@ namespace HttpTracker.Elasticsearch.Tests
         public void CreateInstance()
         {
             var factory = Services.BuildServiceProvider().GetRequiredService<IHttpTrackerLogRepositoryFactory>();
-            var repository = factory.CreateInstance(yearMonth);
+            var repository = factory.CreateInstance(HttpTrackerInstance.InstanceName);
 
             Assert.NotNull(repository);
         }
@@ -24,13 +24,13 @@ namespace HttpTracker.Elasticsearch.Tests
         public async Task InsertAsync()
         {
             var factory = Services.BuildServiceProvider().GetRequiredService<IHttpTrackerLogRepositoryFactory>();
-            var repository = factory.CreateInstance(yearMonth);
+            var repository = factory.CreateInstance(HttpTrackerInstance.InstanceName);
 
             Assert.NotNull(repository);
 
             var log = new HttpTrackerLog
             {
-                YearMonth = yearMonth,
+                YearMonth = HttpTrackerInstance.InstanceName,
                 Type = HttpTrackerLog.Types.Debug,
                 Description = "this is a test",
             };
@@ -79,7 +79,7 @@ namespace HttpTracker.Elasticsearch.Tests
         public async Task SearchAsync()
         {
             var factory = Services.BuildServiceProvider().GetRequiredService<IHttpTrackerLogRepositoryFactory>();
-            var repository = factory.CreateInstance(yearMonth);
+            var repository = factory.CreateInstance(HttpTrackerInstance.InstanceName);
 
             Assert.NotNull(repository);
 

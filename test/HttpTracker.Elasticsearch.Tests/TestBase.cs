@@ -1,15 +1,12 @@
 ﻿using HttpTracker.Options;
 using HttpTracker.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace HttpTracker.Elasticsearch.Tests
 {
     public class TestBase
     {
         public ServiceCollection Services;
-
-        public string yearMonth;
 
         public TestBase()
         {
@@ -22,8 +19,6 @@ namespace HttpTracker.Elasticsearch.Tests
 
             Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
             Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
-
-            yearMonth = $"{DateTimeOffset.UtcNow.LocalDateTime:yyyyMM}";
         }
     }
 }

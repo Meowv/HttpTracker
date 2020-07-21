@@ -18,6 +18,11 @@ namespace HttpTracker.Repositories
 
         protected override string IndexName { get; }
 
+        public async Task<HttpTrackerResponse> InitAsync()
+        {
+            return await Task.FromResult(new HttpTrackerResponse());
+        }
+
         public async Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit)
         {
             var response = new HttpTrackerResponse<PagedList<HttpTrackerLog>>();
