@@ -26,7 +26,7 @@ namespace HttpTracker.Extensions
         internal static IHttpTrackerBuilder UseElasticsearchService(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
-            builder.Services.AddSingleton<HttpTrackerLogRepositoryFactory>();
+            builder.Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
             builder.Services.AddSingleton<IHttpTrackerLogRepository, HttpTrackerLogRepository>();
 
             return builder;
