@@ -32,7 +32,7 @@ namespace HttpTracker
                 settings.Credential = MongoCredential.CreateCredential("admin", Options.Username, Options.Password);
             }
 
-            if (Options.ConnectionMode.ToLower() == "replicaset")
+            if (Options.ConnectionMode?.ToLower() == "replicaset")
             {
                 settings.ConnectionMode = ConnectionMode.ReplicaSet;
                 settings.ReadPreference = new ReadPreference(ReadPreferenceMode.SecondaryPreferred);
