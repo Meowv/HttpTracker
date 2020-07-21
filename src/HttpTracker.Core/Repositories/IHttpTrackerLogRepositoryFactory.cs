@@ -3,10 +3,10 @@
     public interface IHttpTrackerLogRepositoryFactory
     {
         /// <summary>
-        /// 创建以年月分表的实例
+        /// 创建实例
         /// </summary>
-        /// <param name="yearMonth"></param>
+        /// <param name="name"></param>
         /// <returns></returns>
-        IHttpTrackerLogRepository CreateInstance(string yearMonth);
+        IHttpTrackerLogRepository CreateInstance(string name);
     }
 }

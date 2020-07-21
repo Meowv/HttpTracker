@@ -11,9 +11,15 @@ namespace HttpTracker.Repositories
 {
     public class HttpTrackerLogRepository : ElasticsearchRepositoryBase, IHttpTrackerLogRepository
     {
-        public HttpTrackerLogRepository(IElasticsearchProvider elasticsearchProvider, HttpTrackerElasticsearchOptions options, string yearMonth) : base(elasticsearchProvider)
+        public HttpTrackerLogRepository(IElasticsearchProvider elasticsearchProvider, HttpTrackerElasticsearchOptions options, string name) : base(elasticsearchProvider)
         {
-            IndexName = $"{options.IndexPrefix}_{IndexConsts.IndexNames.HttpTrackerLog}_{yearMonth}";
+            var indexName = $"{IndexConsts.IndexNames.HttpTrackerLog}_{name}";
+            if (!string.IsNullOrEmpty(options.IndexPrefix))
+            {
+                indexName = $"{options.IndexPrefix}_{indexName}";
+            }
+
+            IndexName = indexName;
         }
 
         protected override string IndexName { get; }

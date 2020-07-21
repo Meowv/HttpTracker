@@ -6,6 +6,7 @@ namespace HttpTracker.Repositories
     public class HttpTrackerLogRepositoryFactory : IHttpTrackerLogRepositoryFactory
     {
         private readonly IElasticsearchProvider _elasticsearchProvider;
+
         private HttpTrackerElasticsearchOptions Options { get; }
 
         public HttpTrackerLogRepositoryFactory(IElasticsearchProvider elasticsearchProvider, IOptions<HttpTrackerElasticsearchOptions> options)
@@ -14,9 +15,9 @@ namespace HttpTracker.Repositories
             Options = options.Value;
         }
 
-        public IHttpTrackerLogRepository CreateInstance(string yearMonth)
+        public IHttpTrackerLogRepository CreateInstance(string name)
         {
-            return new HttpTrackerLogRepository(_elasticsearchProvider, Options, yearMonth);
+            return new HttpTrackerLogRepository(_elasticsearchProvider, Options, name);
         }
     }
 }

@@ -52,6 +52,7 @@ namespace HttpTracker.Extensions
             if (options.Value.Disabled) return null;
 
             var factory = app.ApplicationServices.GetService<IHttpTrackerLogRepositoryFactory>();
+
             var repository = factory.CreateInstance(HttpTrackerInstance.InstanceName);
 
             repository.InitAsync();

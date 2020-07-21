@@ -27,7 +27,6 @@ namespace HttpTracker.Extensions
         {
             builder.Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
             builder.Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
-            builder.Services.AddSingleton<IHttpTrackerLogRepository, HttpTrackerLogRepository>();
 
             return builder;
         }
