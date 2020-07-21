@@ -23,7 +23,7 @@ namespace HttpTracker.Elasticsearch.Tests
             Services.AddSingleton<IElasticsearchProvider, ElasticsearchProvider>();
             Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
 
-            yearMonth = $"{DateTimeOffset.UtcNow.LocalDateTime:yyyy_MM}";
+            yearMonth = $"{DateTimeOffset.UtcNow.LocalDateTime:yyyyMM}";
         }
     }
 }
