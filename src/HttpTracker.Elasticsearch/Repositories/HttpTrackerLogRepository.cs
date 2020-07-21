@@ -1,4 +1,6 @@
 ﻿using HttpTracker.Domain;
+using HttpTracker.Dto;
+using HttpTracker.Dto.Params;
 using HttpTracker.Options;
 using HttpTracker.Response;
 using Nest;
@@ -29,37 +31,74 @@ namespace HttpTracker.Repositories
             return await Task.FromResult(new HttpTrackerResponse());
         }
 
-        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLog>>> SearchAsync(string type, string keyword, int page, int limit)
+        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(QueryInput input)
         {
-            var response = new HttpTrackerResponse<PagedList<HttpTrackerLog>>();
+            var response = new HttpTrackerResponse<PagedList<HttpTrackerLogDto>>();
 
             var query = new List<QueryContainer>();
-            if (string.IsNullOrEmpty(type))
+            if (!string.IsNullOrEmpty(input.Type))
             {
                 query.Add(new MatchPhraseQuery
                 {
                     Field = new Field("Type"),
-                    Query = type
+                    Query = input.Type
                 });
             }
-            if (string.IsNullOrEmpty(keyword))
+            if (!string.IsNullOrEmpty(input.Keyword))
             {
                 query.Add(new MatchPhraseQuery
                 {
                     Field = new Field("Description"),
-                    Query = keyword
+                    Query = input.Keyword
                 });
             }
 
             var searchResponse = await Client.SearchAsync<HttpTrackerLog>(x => x.Index(IndexName)
                                              .Query(x => x.Bool(x => x.Should(query.ToArray())))
-                                             .From((page - 1) * limit)
-                                             .Take(limit)
+                                             .From((input.Page - 1) * input.Limit)
+                                             .Take(input.Limit)
                                              .Sort(s => s.Descending(x => x.CreationTime)));
-            var total = Convert.ToInt32(searchResponse.Total);
-            var list = searchResponse.Documents.ToList();
 
-            response.IsSuccess(new PagedList<HttpTrackerLog>(total, list));
+            var total = Convert.ToInt32(searchResponse.Total);
+            var list = searchResponse.Documents
+                                     .Select(x => new HttpTrackerLogDto
+                                     {
+                                         Type = x.Type,
+                                         Description = x.Description,
+                                         Request = new RequestInfo
+                                         {
+                                             UserAgent = x.UserAgent,
+                                             Method = x.Method,
+                                             Url = x.Url,
+                                             Referrer = x.Referrer,
+                                             IpAddress = x.IpAddress,
+                                             Milliseconds = x.Milliseconds,
+                                             RequestBody = x.RequestBody,
+                                             Cookies = x.Cookies,
+                                             Headers = x.Headers
+                                         },
+                                         Response = new ResponseInfo
+                                         {
+                                             StatusCode = x.StatusCode,
+                                             ResponseBody = x.ResponseBody
+                                         },
+                                         Server = new ServerInfo
+                                         {
+                                             ServerName = x.ServerName,
+                                             PId = x.PId,
+                                             Host = x.Host,
+                                             Port = x.Port
+                                         },
+                                         Exception = new ExceptionInfo
+                                         {
+                                             ExceptionType = x.ExceptionType,
+                                             Message = x.Message,
+                                             StackTrace = x.StackTrace
+                                         },
+                                         CreationTime = x.CreationTime
+                                     }).ToList();
+
+            response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
             return response;
         }
 

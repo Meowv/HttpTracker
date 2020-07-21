@@ -30,27 +30,65 @@ namespace HttpTracker.Repositories
             return await Task.FromResult(new HttpTrackerResponse());
         }
 
-        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(SearchInput input)
+        public async Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(QueryInput input)
         {
             var response = new HttpTrackerResponse<PagedList<HttpTrackerLogDto>>();
 
             var collection = Database.GetCollection<HttpTrackerLog>(CollectionName);
 
-            //var query = collection.AsQueryable();
+            var query = collection.AsQueryable();
 
-            //if (string.IsNullOrEmpty(type))
-            //{
-            //    query = query.Where(x => x.Type.Contains(type));
-            //}
-            //if (string.IsNullOrEmpty(keyword))
-            //{
-            //    query = query.Where(x => x.Description.Contains(keyword));
-            //}
+            if (!string.IsNullOrEmpty(input.Type))
+            {
+                query = query.Where(x => x.Type.Contains(input.Type));
+            }
+            if (!string.IsNullOrEmpty(input.Keyword))
+            {
+                query = query.Where(x => x.Description.Contains(input.Keyword));
+            }
 
-            //var total = await query.CountAsync();
-            //var list = await query.OrderByDescending(x => x.CreationTime).Take((page - 1) * limit).Skip(limit).ToListAsync();
+            var total = await query.CountAsync();
+            var list = await query.OrderByDescending(x => x.CreationTime)
+                                  .Skip((input.Page - 1) * input.Limit)
+                                  .Take(input.Limit)
+                                  .Select(x => new HttpTrackerLogDto
+                                  {
+                                      Type = x.Type,
+                                      Description = x.Description,
+                                      Request = new RequestInfo
+                                      {
+                                          UserAgent = x.UserAgent,
+                                          Method = x.Method,
+                                          Url = x.Url,
+                                          Referrer = x.Referrer,
+                                          IpAddress = x.IpAddress,
+                                          Milliseconds = x.Milliseconds,
+                                          RequestBody = x.RequestBody,
+                                          Cookies = x.Cookies,
+                                          Headers = x.Headers
+                                      },
+                                      Response = new ResponseInfo
+                                      {
+                                          StatusCode = x.StatusCode,
+                                          ResponseBody = x.ResponseBody
+                                      },
+                                      Server = new ServerInfo
+                                      {
+                                          ServerName = x.ServerName,
+                                          PId = x.PId,
+                                          Host = x.Host,
+                                          Port = x.Port
+                                      },
+                                      Exception = new ExceptionInfo
+                                      {
+                                          ExceptionType = x.ExceptionType,
+                                          Message = x.Message,
+                                          StackTrace = x.StackTrace
+                                      },
+                                      CreationTime = x.CreationTime
+                                  }).ToListAsync();
 
-            //response.IsSuccess(new PagedList<HttpTrackerLog>(total, list));
+            response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
             return response;
         }
 
