@@ -31,9 +31,27 @@ namespace HttpTracker.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<HttpTrackerResponse> InsertAsync(HttpTrackerLog httpTrackerLog)
+        public async Task<HttpTrackerResponse> InsertAsync(HttpTrackerLog httpTrackerLog)
         {
-            throw new NotImplementedException();
+            var response = new HttpTrackerResponse();
+            if (httpTrackerLog == null)
+            {
+                response.IsFailed("HttpTrackerLog is null");
+                return response;
+            }
+
+            try
+            {
+                var collection = Database.GetCollection<HttpTrackerLog>(CollectionName);
+
+                await collection.InsertOneAsync(httpTrackerLog);
+            }
+            catch (Exception ex)
+            {
+                response.IsFailed(ex);
+            }
+
+            return response;
         }
     }
 }
