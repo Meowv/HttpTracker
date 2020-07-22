@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HttpTracker.Filters
 {
+    /// <summary>
+    /// HttpTracker ExceptionFilter
+    /// </summary>
     public class HttpTrackerExceptionFilter : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
