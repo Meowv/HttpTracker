@@ -40,7 +40,7 @@ namespace HttpTracker.Repositories
             {
                 query.Add(new MatchPhraseQuery
                 {
-                    Field = new Field("Type"),
+                    Field = new Field("type"),
                     Query = input.Type
                 });
             }
@@ -48,15 +48,15 @@ namespace HttpTracker.Repositories
             {
                 query.Add(new MatchPhraseQuery
                 {
-                    Field = new Field("Description"),
+                    Field = new Field("description"),
                     Query = input.Keyword
                 });
             }
 
             var searchResponse = await Client.SearchAsync<HttpTrackerLog>(x => x.Index(IndexName)
-                                             .Query(x => x.Bool(x => x.Should(query.ToArray())))
                                              .From((input.Page - 1) * input.Limit)
-                                             .Take(input.Limit)
+                                             .Size(input.Limit)
+                                             .Query(x => x.Bool(x => x.Should(query.ToArray())))
                                              .Sort(s => s.Descending(x => x.CreationTime)));
 
             var total = Convert.ToInt32(searchResponse.Total);
