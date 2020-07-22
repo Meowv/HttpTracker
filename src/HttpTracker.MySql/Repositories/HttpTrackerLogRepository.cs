@@ -80,21 +80,27 @@ namespace HttpTracker.Repositories
 
             if (!string.IsNullOrEmpty(input.Type))
             {
-                builder.Append($" AND Type LIKE '%{input.Type}%'");
+                builder.Append($" AND Type LIKE @Type");
+
+                input.Type = $"%{input.Type}%";
             }
             if (!string.IsNullOrEmpty(input.Keyword))
             {
-                builder.Append($" AND Description LIKE '%{input.Keyword}%'");
+                builder.Append($" AND Description LIKE @Keyword");
+
+                input.Keyword = $"%{input.Keyword}%";
             }
 
             var where = builder.ToString();
 
             var sql = $@"SELECT COUNT(1) FROM {TableName} WHERE 1 = 1 {where};
-                         SELECT `Type`, `Description`, `UserAgent`, `Method`, `Url` , `Referrer`, `IpAddress`, `Milliseconds`, `QueryString`, `RequestBody` , `Cookies`, `Headers`, `StatusCode`, `ResponseBody`, `ServerName` , `PId`, `Host`, `Port`, `ExceptionType`, `Message` , `StackTrace`, `CreationTime` FROM {TableName} WHERE 1 = 1 {where} LIMIT {input.Limit} OFFSET {(input.Page - 1) * input.Limit}";
+                         SELECT `Type`, `Description`, `UserAgent`, `Method`, `Url` , `Referrer`, `IpAddress`, `Milliseconds`, `QueryString`, `RequestBody` , `Cookies`, `Headers`, `StatusCode`, `ResponseBody`, `ServerName` , `PId`, `Host`, `Port`, `ExceptionType`, `Message` , `StackTrace`, `CreationTime` FROM {TableName} WHERE 1 = 1 {where} LIMIT @Limit OFFSET @Page";
 
             using (Connection)
             {
-                var query = await Connection.QueryMultipleAsync(sql);
+                input.Page = (input.Page - 1) * input.Limit;
+                
+                var query = await Connection.QueryMultipleAsync(sql, input);
 
                 var total = await query.ReadFirstOrDefaultAsync<long>();
                 var logs = await query.ReadAsync<HttpTrackerLog>();
