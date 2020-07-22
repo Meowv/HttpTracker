@@ -10,7 +10,7 @@ namespace HttpTracker.Extensions
         public static IHttpTrackerBuilder UseMongoDb(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddOptions();
-            builder.Services.Configure<HttpTrackerMongoDbOptions>(builder.Configuration.GetSection("Storage:").GetSection("mongodb"));
+            builder.Services.Configure<HttpTrackerMongoDbOptions>(builder.Configuration.GetSection("Storage").GetSection("MongoDb"));
 
             return builder.UseMongoDbService();
         }
@@ -23,7 +23,7 @@ namespace HttpTracker.Extensions
             return builder.UseMongoDbService();
         }
 
-        public static IHttpTrackerBuilder UseMongoDbService(this IHttpTrackerBuilder builder)
+        internal static IHttpTrackerBuilder UseMongoDbService(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddSingleton<IMongoDbProvider, MongoDbProvider>();
             builder.Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
