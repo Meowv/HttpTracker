@@ -10,7 +10,7 @@ namespace HttpTracker.Extensions
         public static IHttpTrackerBuilder UseElasticsearch(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddOptions();
-            builder.Services.Configure<HttpTrackerElasticsearchOptions>(builder.Configuration.GetSection("Storage"));
+            builder.Services.Configure<HttpTrackerElasticsearchOptions>(builder.Configuration.GetSection("Storage").GetSection("Elasticsearch"));
 
             return builder.UseElasticsearchService();
         }
