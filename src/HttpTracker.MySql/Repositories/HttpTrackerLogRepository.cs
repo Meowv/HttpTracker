@@ -1,4 +1,5 @@
-﻿using HttpTracker.Domain;
+﻿using Dapper;
+using HttpTracker.Domain;
 using HttpTracker.Dto;
 using HttpTracker.Dto.Params;
 using HttpTracker.Options;
@@ -23,9 +24,50 @@ namespace HttpTracker.Repositories
 
         protected override string TableName { get; }
 
-        public Task<HttpTrackerResponse> InitAsync()
+        public async Task<HttpTrackerResponse> InitAsync()
         {
-            throw new NotImplementedException();
+            var response = new HttpTrackerResponse();
+
+            try
+            {
+                using (Connection)
+                {
+                    var sql = $@"CREATE TABLE IF NOT EXISTS `{TableName}` (
+                                  `Id` int(11) NOT NULL,
+                                  `Type` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                                  `Description` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `UserAgent` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `Method` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                                  `Url` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                                  `Referrer` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `IpAddress` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+                                  `Milliseconds` int(11) NOT NULL,
+                                  `QueryString` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `RequestBody` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  `Cookies` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  `Headers` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  `StatusCode` int(11) NOT NULL,
+                                  `ResponseBody` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  `ServerName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `PId` int(11) NULL DEFAULT NULL,
+                                  `Host` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `Port` int(11) NULL DEFAULT NULL,
+                                  `ExceptionType` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `Message` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+                                  `StackTrace` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
+                                  `CreationTime` datetime(0) NOT NULL,
+                                  PRIMARY KEY (`Id`) USING BTREE
+                                ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;";
+
+                    await Connection.ExecuteAsync(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                response.IsFailed(ex);
+            }
+
+            return response;
         }
 
         public Task<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>> QueryAsync(QueryInput input)

@@ -9,7 +9,7 @@ namespace HttpTracker.Repositories
     public interface IHttpTrackerLogRepository
     {
         /// <summary>
-        /// 初始化数据库
+        /// 初始化数据库表
         /// </summary>
         /// <returns></returns>
         Task<HttpTrackerResponse> InitAsync();
