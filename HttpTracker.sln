@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9B3FC08-603
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MySql", "src\HttpTracker.MySql\HttpTracker.MySql.csproj", "{18618C90-93A7-4275-89EE-7A90090AE161}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MySql.Tests", "test\HttpTracker.MySql.Tests\HttpTracker.MySql.Tests.csproj", "{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{18618C90-93A7-4275-89EE-7A90090AE161}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18618C90-93A7-4275-89EE-7A90090AE161}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18618C90-93A7-4275-89EE-7A90090AE161}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +89,7 @@ Global
 		{47C0DC24-A1BC-41DF-8157-558BCC7D8AB9} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{6422771B-93F3-4D4B-BE35-545003CD177D} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{18618C90-93A7-4275-89EE-7A90090AE161} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
