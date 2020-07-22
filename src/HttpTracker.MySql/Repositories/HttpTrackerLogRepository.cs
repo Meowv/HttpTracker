@@ -99,7 +99,7 @@ namespace HttpTracker.Repositories
             using (Connection)
             {
                 input.Page = (input.Page - 1) * input.Limit;
-                
+
                 var query = await Connection.QueryMultipleAsync(sql, input);
 
                 var total = await query.ReadFirstOrDefaultAsync<long>();
