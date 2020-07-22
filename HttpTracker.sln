@@ -40,6 +40,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MySql.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLite", "src\HttpTracker.SQLite\HttpTracker.SQLite.csproj", "{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer", "src\HttpTracker.SQLServer\HttpTracker.SQLServer.csproj", "{20AB5777-D874-45DA-9E32-3A345211E3AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +84,10 @@ Global
 		{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,6 +103,7 @@ Global
 		{18618C90-93A7-4275-89EE-7A90090AE161} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{B90AF4AF-37A0-437A-8661-79ACB54BAFC4} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{20AB5777-D874-45DA-9E32-3A345211E3AB} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
