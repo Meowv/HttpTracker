@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLite", "src\H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer", "src\HttpTracker.SQLServer\HttpTracker.SQLServer.csproj", "{20AB5777-D874-45DA-9E32-3A345211E3AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.PostgreSQL", "src\HttpTracker.PostgreSQL\HttpTracker.PostgreSQL.csproj", "{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20AB5777-D874-45DA-9E32-3A345211E3AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +110,7 @@ Global
 		{3D8AF0B5-C6D8-440C-83C7-773C53E37C19} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{B90AF4AF-37A0-437A-8661-79ACB54BAFC4} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{20AB5777-D874-45DA-9E32-3A345211E3AB} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
