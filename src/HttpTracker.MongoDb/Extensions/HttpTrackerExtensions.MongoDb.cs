@@ -10,7 +10,7 @@ namespace HttpTracker.Extensions
         public static IHttpTrackerBuilder UseMongoDb(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddOptions();
-            builder.Services.Configure<HttpTrackerMongoDbOptions>(builder.Configuration.GetSection("Storage").GetSection("MongoDb"));
+            builder.Services.Configure<HttpTrackerMongoDbOptions>(builder.Configuration.GetSection("Storage:MongoDb"));
 
             return builder.UseMongoDbService();
         }

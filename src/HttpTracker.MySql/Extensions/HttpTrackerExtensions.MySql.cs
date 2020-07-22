@@ -10,7 +10,7 @@ namespace HttpTracker.Extensions
         public static IHttpTrackerBuilder UseMySql(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddOptions();
-            builder.Services.Configure<HttpTrackerMySqlOptions>(builder.Configuration.GetSection("Storage").GetSection("MySql"));
+            builder.Services.Configure<HttpTrackerMySqlOptions>(builder.Configuration.GetSection("Storage:MySql"));
 
             return builder.UseMySqlService();
         }
