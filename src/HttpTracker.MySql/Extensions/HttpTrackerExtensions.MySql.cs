@@ -23,7 +23,7 @@ namespace HttpTracker.Extensions
             return builder.UseMySqlService();
         }
 
-        public static IHttpTrackerBuilder UseMySqlService(this IHttpTrackerBuilder builder)
+        internal static IHttpTrackerBuilder UseMySqlService(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddSingleton<IDbConnectionProvider, MySqlProvider>();
             builder.Services.AddSingleton<IHttpTrackerLogRepositoryFactory, HttpTrackerLogRepositoryFactory>();
