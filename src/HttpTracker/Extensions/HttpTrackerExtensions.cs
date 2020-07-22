@@ -34,7 +34,7 @@ namespace HttpTracker.Extensions
             return services.AddHttpTrackerService(configuration);
         }
 
-        private static IHttpTrackerBuilder AddHttpTrackerService(this IServiceCollection services, IConfiguration configuration)
+        internal static IHttpTrackerBuilder AddHttpTrackerService(this IServiceCollection services, IConfiguration configuration)
         {
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
