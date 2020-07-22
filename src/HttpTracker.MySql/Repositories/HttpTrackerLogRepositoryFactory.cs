@@ -1,6 +1,5 @@
 ﻿using HttpTracker.Options;
 using Microsoft.Extensions.Options;
-using System;
 
 namespace HttpTracker.Repositories
 {
