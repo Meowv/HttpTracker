@@ -124,7 +124,7 @@ namespace HttpTracker.Repositories
 
             var sql = $@"SELECT COUNT(1) FROM {TableName} WHERE 1 = 1 {where};
                          SELECT Type, Description, UserAgent, Method, Url , Referrer, IpAddress, Milliseconds, QueryString, RequestBody , Cookies, Headers, StatusCode, ResponseBody, ServerName , PId, Host, Port, ExceptionType, Message , StackTrace, CreationTime FROM (SELECT ROW_NUMBER() OVER(ORDER BY CreationTime DESC) AS Number, * FROM {TableName} WHERE 1= 1 {where} ) AS t WHERE t.Number BETWEEN @page AND @limit";
-            
+
             using (Connection)
             {
                 var page = input.Page;
