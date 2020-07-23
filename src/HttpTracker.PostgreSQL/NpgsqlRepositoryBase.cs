@@ -11,3 +11,4 @@
 
         protected abstract string TableName { get; }
     }
+}
