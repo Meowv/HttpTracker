@@ -34,17 +34,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.MongoDb.Tests",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D9B3FC08-6035-4DB1-B419-5848654F4986}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MySql", "src\HttpTracker.MySql\HttpTracker.MySql.csproj", "{18618C90-93A7-4275-89EE-7A90090AE161}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.MySql", "src\HttpTracker.MySql\HttpTracker.MySql.csproj", "{18618C90-93A7-4275-89EE-7A90090AE161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.MySql.Tests", "test\HttpTracker.MySql.Tests\HttpTracker.MySql.Tests.csproj", "{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.MySql.Tests", "test\HttpTracker.MySql.Tests\HttpTracker.MySql.Tests.csproj", "{3D8AF0B5-C6D8-440C-83C7-773C53E37C19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLite", "src\HttpTracker.SQLite\HttpTracker.SQLite.csproj", "{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.SQLite", "src\HttpTracker.SQLite\HttpTracker.SQLite.csproj", "{B90AF4AF-37A0-437A-8661-79ACB54BAFC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer", "src\HttpTracker.SQLServer\HttpTracker.SQLServer.csproj", "{20AB5777-D874-45DA-9E32-3A345211E3AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.SQLServer", "src\HttpTracker.SQLServer\HttpTracker.SQLServer.csproj", "{20AB5777-D874-45DA-9E32-3A345211E3AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.PostgreSQL", "src\HttpTracker.PostgreSQL\HttpTracker.PostgreSQL.csproj", "{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.PostgreSQL", "src\HttpTracker.PostgreSQL\HttpTracker.PostgreSQL.csproj", "{0AC75DFD-C14C-42EF-A8F5-3DE82715A569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Oracle", "src\HttpTracker.Oracle\HttpTracker.Oracle.csproj", "{283F3B4E-18C9-4158-A733-7E8E4E62C67F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Oracle", "src\HttpTracker.Oracle\HttpTracker.Oracle.csproj", "{283F3B4E-18C9-4158-A733-7E8E4E62C67F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer.Tests", "test\HttpTracker.SQLServer.Tests\HttpTracker.SQLServer.Tests.csproj", "{BB73D999-2E78-45DB-97BE-490B76802E8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -100,6 +102,10 @@ Global
 		{283F3B4E-18C9-4158-A733-7E8E4E62C67F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{283F3B4E-18C9-4158-A733-7E8E4E62C67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{283F3B4E-18C9-4158-A733-7E8E4E62C67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{20AB5777-D874-45DA-9E32-3A345211E3AB} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{283F3B4E-18C9-4158-A733-7E8E4E62C67F} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
+		{BB73D999-2E78-45DB-97BE-490B76802E8B} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
