@@ -2,6 +2,7 @@
 using HttpTracker.Domain;
 using HttpTracker.Extensions;
 using HttpTracker.Options;
+using HttpTracker.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -23,12 +24,15 @@ namespace HttpTracker.Middleware
 
         private HttpTrackerOptions Options { get; }
 
+        private readonly IHttpTrackerLogRepositoryFactory _factory;
+
         private HttpTrackerLog log;
 
-        public HttpTrackerMiddleware(RequestDelegate next, IOptions<HttpTrackerOptions> options)
+        public HttpTrackerMiddleware(RequestDelegate next, IOptions<HttpTrackerOptions> options, IHttpTrackerLogRepositoryFactory factory)
         {
             _next = next;
             Options = options.Value;
+            _factory = factory;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -79,7 +83,8 @@ namespace HttpTracker.Middleware
             }
             finally
             {
-                // TODO 后续操作 => 消息队列? 直接入库?
+                var repository = _factory.CreateInstance(HttpTrackerInstance.InstanceName);
+                await repository.InsertAsync(log);
             }
         }
 
