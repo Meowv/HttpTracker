@@ -1,10 +1,8 @@
-﻿using System.Data;
-
-namespace HttpTracker
+﻿namespace HttpTracker
 {
     public abstract class NpgsqlRepositoryBase
     {
-        private readonly IDbConnectionProvider _dbConnectionProvider;
+        public readonly IDbConnectionProvider _dbConnectionProvider;
 
         protected NpgsqlRepositoryBase(IDbConnectionProvider dbConnectionProvider)
         {
@@ -12,7 +10,4 @@ namespace HttpTracker
         }
 
         protected abstract string TableName { get; }
-
-        public IDbConnection Connection => _dbConnectionProvider.Connection;
     }
-}

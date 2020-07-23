@@ -8,18 +8,16 @@ namespace HttpTracker
 {
     public class NpgsqlProvider : IDbConnectionProvider
     {
+        private HttpTrackerNpgsqlOptions Options { get; }
+
         public NpgsqlProvider(IOptions<HttpTrackerNpgsqlOptions> options)
         {
             Options = options.Value;
 
             if (string.IsNullOrEmpty(Options.ConnectionString))
                 throw new Exception("PostgreSQL 配置有误，请检查。");
-
-            Connection = new NpgsqlConnection(Options.ConnectionString);
         }
 
-        public HttpTrackerNpgsqlOptions Options { get; }
-
-        public IDbConnection Connection { get; }
+        public IDbConnection Connection => new NpgsqlConnection(Options.ConnectionString);
     }
 }

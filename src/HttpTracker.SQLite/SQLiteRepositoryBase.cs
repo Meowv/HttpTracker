@@ -1,10 +1,8 @@
-﻿using System.Data;
-
-namespace HttpTracker
+﻿namespace HttpTracker
 {
     public abstract class SQLiteRepositoryBase
     {
-        private readonly IDbConnectionProvider _dbConnectionProvider;
+        public readonly IDbConnectionProvider _dbConnectionProvider;
 
         protected SQLiteRepositoryBase(IDbConnectionProvider dbConnectionProvider)
         {
@@ -12,7 +10,5 @@ namespace HttpTracker
         }
 
         protected abstract string TableName { get; }
-
-        public IDbConnection Connection => _dbConnectionProvider.Connection;
     }
 }

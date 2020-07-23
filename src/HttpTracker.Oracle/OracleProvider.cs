@@ -8,18 +8,16 @@ namespace HttpTracker
 {
     public class OracleProvider : IDbConnectionProvider
     {
+        private HttpTrackerOracleOptions Options { get; }
+
         public OracleProvider(IOptions<HttpTrackerOracleOptions> options)
         {
             Options = options.Value;
 
             if (string.IsNullOrEmpty(Options.ConnectionString))
                 throw new Exception("Oracle 配置有误，请检查。");
-
-            Connection = new OracleConnection(Options.ConnectionString);
         }
 
-        public HttpTrackerOracleOptions Options { get; }
-
-        public IDbConnection Connection { get; }
+        public IDbConnection Connection => new OracleConnection(Options.ConnectionString);
     }
 }

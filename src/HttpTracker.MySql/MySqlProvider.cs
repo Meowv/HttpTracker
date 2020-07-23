@@ -8,18 +8,16 @@ namespace HttpTracker
 {
     public class MySqlProvider : IDbConnectionProvider
     {
+        private HttpTrackerMySqlOptions Options { get; }
+
         public MySqlProvider(IOptions<HttpTrackerMySqlOptions> options)
         {
             Options = options.Value;
 
             if (string.IsNullOrEmpty(Options.ConnectionString))
                 throw new Exception("MySql 配置有误，请检查。");
-
-            Connection = new MySqlConnection(Options.ConnectionString);
         }
 
-        public HttpTrackerMySqlOptions Options { get; }
-
-        public IDbConnection Connection { get; }
+        public IDbConnection Connection => new MySqlConnection(Options.ConnectionString);
     }
 }

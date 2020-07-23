@@ -8,18 +8,16 @@ namespace HttpTracker
 {
     public class SQLServerProvider : IDbConnectionProvider
     {
+        private HttpTrackerSQLServerOptions Options { get; }
+
         public SQLServerProvider(IOptions<HttpTrackerSQLServerOptions> options)
         {
             Options = options.Value;
 
             if (string.IsNullOrEmpty(Options.ConnectionString))
                 throw new Exception("SQLServer 配置有误，请检查。");
-
-            Connection = new SqlConnection(Options.ConnectionString);
         }
 
-        public HttpTrackerSQLServerOptions Options { get; }
-
-        public IDbConnection Connection { get; }
+        public IDbConnection Connection => new SqlConnection(Options.ConnectionString);
     }
 }

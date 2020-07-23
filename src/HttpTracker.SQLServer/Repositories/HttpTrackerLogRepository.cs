@@ -32,39 +32,36 @@ namespace HttpTracker.Repositories
 
             try
             {
-                using (Connection)
-                {
-                    var sql = $@"IF NOT EXISTS (SELECT * from sysobjects where id = object_id('{TableName}'))
-                                 BEGIN
-                                     CREATE TABLE [dbo].[{TableName}](
-	                                     [Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	                                     [Type] [nvarchar](20) NOT NULL,
-	                                     [Description] [nvarchar](200) NULL,
-	                                     [UserAgent] [nvarchar](200) NULL,
-	                                     [Method] [nvarchar](20) NOT NULL,
-	                                     [Url] [nvarchar](200) NOT NULL,
-	                                     [Referrer] [nvarchar](200) NULL,
-	                                     [IpAddress] [nvarchar](20) NOT NULL,
-	                                     [Milliseconds] [int] NOT NULL,
-	                                     [QueryString] [nvarchar](200) NULL,
-	                                     [RequestBody] [nvarchar](max) NULL,
-	                                     [Cookies] [nvarchar](max) NULL,
-	                                     [Headers] [nvarchar](max) NULL,
-	                                     [StatusCode] [int] NOT NULL,
-	                                     [ResponseBody] [nvarchar](max) NULL,
-	                                     [ServerName] [nvarchar](50) NULL,
-	                                     [PId] [int] NULL,
-	                                     [Host] [nvarchar](20) NULL,
-	                                     [Port] [int] NULL,
-	                                     [ExceptionType] [nvarchar](50) NULL,
-	                                     [Message] [nvarchar](200) NULL,
-	                                     [StackTrace] [nvarchar](max) NULL,
-	                                     [CreationTime] [datetime] NOT NULL
-                                     )
-                                 END";
-
-                    await Connection.ExecuteAsync(sql);
-                }
+                using var conn = _dbConnectionProvider.Connection;
+                var sql = $@"IF NOT EXISTS (SELECT * from sysobjects where id = object_id('{TableName}'))
+                             BEGIN
+                                 CREATE TABLE [dbo].[{TableName}](
+	                                 [Id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+	                                 [Type] [nvarchar](20) NOT NULL,
+	                                 [Description] [nvarchar](200) NULL,
+	                                 [UserAgent] [nvarchar](200) NULL,
+	                                 [Method] [nvarchar](20) NOT NULL,
+	                                 [Url] [nvarchar](200) NOT NULL,
+	                                 [Referrer] [nvarchar](200) NULL,
+	                                 [IpAddress] [nvarchar](20) NOT NULL,
+	                                 [Milliseconds] [int] NOT NULL,
+	                                 [QueryString] [nvarchar](200) NULL,
+	                                 [RequestBody] [nvarchar](max) NULL,
+	                                 [Cookies] [nvarchar](max) NULL,
+	                                 [Headers] [nvarchar](max) NULL,
+	                                 [StatusCode] [int] NOT NULL,
+	                                 [ResponseBody] [nvarchar](max) NULL,
+	                                 [ServerName] [nvarchar](50) NULL,
+	                                 [PId] [int] NULL,
+	                                 [Host] [nvarchar](20) NULL,
+	                                 [Port] [int] NULL,
+	                                 [ExceptionType] [nvarchar](50) NULL,
+	                                 [Message] [nvarchar](200) NULL,
+	                                 [StackTrace] [nvarchar](max) NULL,
+	                                 [CreationTime] [datetime] NOT NULL
+                                 )
+                             END";
+                await conn.ExecuteAsync(sql);
             }
             catch (Exception ex)
             {
@@ -88,10 +85,8 @@ namespace HttpTracker.Repositories
             {
                 var sql = $@"INSERT INTO [dbo].[{TableName}] ([Type] ,[Description] ,[UserAgent] ,[Method] ,[Url] ,[Referrer] ,[IpAddress] ,[Milliseconds] ,[QueryString] ,[RequestBody] ,[Cookies] ,[Headers] ,[StatusCode] ,[ResponseBody] ,[ServerName] ,[PId] ,[Host] ,[Port] ,[ExceptionType] ,[Message] ,[StackTrace] ,[CreationTime]) VALUES (@Type, @Description, @UserAgent, @Method, @Url, @Referrer, @IpAddress, @Milliseconds, @QueryString, @RequestBody, @Cookies, @Headers, @StatusCode, @ResponseBody, @ServerName, @PId, @Host, @Port, @ExceptionType, @Message, @StackTrace, @CreationTime);";
 
-                using (Connection)
-                {
-                    await Connection.ExecuteAsync(sql, httpTrackerLog);
-                }
+                using var conn = _dbConnectionProvider.Connection;
+                await conn.ExecuteAsync(sql, httpTrackerLog);
             }
             catch (Exception ex)
             {
@@ -125,59 +120,56 @@ namespace HttpTracker.Repositories
             var sql = $@"SELECT COUNT(1) FROM {TableName} WHERE 1 = 1 {where};
                          SELECT Type, Description, UserAgent, Method, Url , Referrer, IpAddress, Milliseconds, QueryString, RequestBody , Cookies, Headers, StatusCode, ResponseBody, ServerName , PId, Host, Port, ExceptionType, Message , StackTrace, CreationTime FROM (SELECT ROW_NUMBER() OVER(ORDER BY CreationTime DESC) AS Number, * FROM {TableName} WHERE 1= 1 {where} ) AS t WHERE t.Number BETWEEN @page AND @limit";
 
-            using (Connection)
+            using var conn = _dbConnectionProvider.Connection;
+            var page = input.Page;
+            var limit = input.Limit;
+
+            input.Page = (page - 1) * (limit + 1);
+            input.Limit = page * limit;
+
+            var query = await conn.QueryMultipleAsync(sql, input);
+
+            var total = await query.ReadFirstOrDefaultAsync<int>();
+            var logs = await query.ReadAsync<HttpTrackerLog>();
+
+            var list = logs.Select(x => new HttpTrackerLogDto
             {
-                var page = input.Page;
-                var limit = input.Limit;
-
-                input.Page = (page - 1) * (limit + 1);
-                input.Limit = page * limit;
-
-                var query = await Connection.QueryMultipleAsync(sql, input);
-
-                var total = await query.ReadFirstOrDefaultAsync<int>();
-                var logs = await query.ReadAsync<HttpTrackerLog>();
-
-                var list = logs.Select(x => new HttpTrackerLogDto
+                Type = x.Type,
+                Description = x.Description,
+                Request = new RequestInfo
                 {
-                    Type = x.Type,
-                    Description = x.Description,
-                    Request = new RequestInfo
-                    {
-                        UserAgent = x.UserAgent,
-                        Method = x.Method,
-                        Url = x.Url,
-                        Referrer = x.Referrer,
-                        IpAddress = x.IpAddress,
-                        Milliseconds = x.Milliseconds,
-                        RequestBody = x.RequestBody,
-                        Cookies = x.Cookies,
-                        Headers = x.Headers
-                    },
-                    Response = new ResponseInfo
-                    {
-                        StatusCode = x.StatusCode,
-                        ResponseBody = x.ResponseBody
-                    },
-                    Server = new ServerInfo
-                    {
-                        ServerName = x.ServerName,
-                        PId = x.PId,
-                        Host = x.Host,
-                        Port = x.Port
-                    },
-                    Exception = new ExceptionInfo
-                    {
-                        ExceptionType = x.ExceptionType,
-                        Message = x.Message,
-                        StackTrace = x.StackTrace
-                    },
-                    CreationTime = x.CreationTime
-                }).ToList();
+                    UserAgent = x.UserAgent,
+                    Method = x.Method,
+                    Url = x.Url,
+                    Referrer = x.Referrer,
+                    IpAddress = x.IpAddress,
+                    Milliseconds = x.Milliseconds,
+                    RequestBody = x.RequestBody,
+                    Cookies = x.Cookies,
+                    Headers = x.Headers
+                },
+                Response = new ResponseInfo
+                {
+                    StatusCode = x.StatusCode,
+                    ResponseBody = x.ResponseBody
+                },
+                Server = new ServerInfo
+                {
+                    ServerName = x.ServerName,
+                    PId = x.PId,
+                    Host = x.Host,
+                    Port = x.Port
+                },
+                Exception = new ExceptionInfo
+                {
+                    ExceptionType = x.ExceptionType,
+                    Message = x.Message,
+                    StackTrace = x.StackTrace
+                },
+                CreationTime = x.CreationTime
+            }).ToList();
 
-                response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
-            }
-
+            response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
             return response;
         }
     }
