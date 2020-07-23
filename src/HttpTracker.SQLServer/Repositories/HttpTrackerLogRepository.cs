@@ -127,12 +127,15 @@ namespace HttpTracker.Repositories
             
             using (Connection)
             {
-                input.Page = (input.Page - 1) * (input.Limit + 1);
-                input.Limit = input.Page * input.Limit;
+                var page = input.Page;
+                var limit = input.Limit;
+
+                input.Page = (page - 1) * (limit + 1);
+                input.Limit = page * limit;
 
                 var query = await Connection.QueryMultipleAsync(sql, input);
 
-                var total = await query.ReadFirstOrDefaultAsync<long>();
+                var total = await query.ReadFirstOrDefaultAsync<int>();
                 var logs = await query.ReadAsync<HttpTrackerLog>();
 
                 var list = logs.Select(x => new HttpTrackerLogDto
@@ -172,7 +175,7 @@ namespace HttpTracker.Repositories
                     CreationTime = x.CreationTime
                 }).ToList();
 
-                response.IsSuccess(new PagedList<HttpTrackerLogDto>(Convert.ToInt32(total), list));
+                response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
             }
 
             return response;
