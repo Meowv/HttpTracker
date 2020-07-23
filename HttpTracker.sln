@@ -48,6 +48,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Oracle", "src\H
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer.Tests", "test\HttpTracker.SQLServer.Tests\HttpTracker.SQLServer.Tests.csproj", "{BB73D999-2E78-45DB-97BE-490B76802E8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLite.Tests", "test\HttpTracker.SQLite.Tests\HttpTracker.SQLite.Tests.csproj", "{D50854B5-0796-4904-8A09-A00CE83C39EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB73D999-2E78-45DB-97BE-490B76802E8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D50854B5-0796-4904-8A09-A00CE83C39EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D50854B5-0796-4904-8A09-A00CE83C39EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D50854B5-0796-4904-8A09-A00CE83C39EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D50854B5-0796-4904-8A09-A00CE83C39EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +132,7 @@ Global
 		{0AC75DFD-C14C-42EF-A8F5-3DE82715A569} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{283F3B4E-18C9-4158-A733-7E8E4E62C67F} = {C5E3810D-5CA5-49F4-9F19-62523B4655D3}
 		{BB73D999-2E78-45DB-97BE-490B76802E8B} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
+		{D50854B5-0796-4904-8A09-A00CE83C39EC} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
