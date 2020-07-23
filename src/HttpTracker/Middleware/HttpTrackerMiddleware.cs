@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -45,13 +46,26 @@ namespace HttpTracker.Middleware
                 return;
             }
 
+            var originalBodyStream = context.Response.Body;
+            var responseMemoryStream = new MemoryStream();
+
             var stopwatch = Stopwatch.StartNew();
             stopwatch.Start();
 
             try
             {
-                await _next(context);
+                context.Response.Body = responseMemoryStream;
 
+                await _next(context);
+            }
+            catch (Exception ex)
+            {
+                log.ExceptionType = ex?.GetType().ToString();
+                log.Message = ex?.Message;
+                log.StackTrace = ex?.StackTrace;
+            }
+            finally
+            {
                 stopwatch.Stop();
 
                 log = new HttpTrackerLog()
@@ -75,15 +89,10 @@ namespace HttpTracker.Middleware
                     Host = Options.ServerHost,
                     Port = Options.ServerPort
                 };
-            }
-            catch (Exception ex)
-            {
-                log.ExceptionType = ex?.GetType().ToString();
-                log.Message = ex?.Message;
-                log.StackTrace = ex?.StackTrace;
-            }
-            finally
-            {
+
+                await responseMemoryStream.CopyToAsync(originalBodyStream);
+                responseMemoryStream.Dispose();
+
                 var repository = _factory.CreateInstance(HttpTrackerInstance.InstanceName);
                 await repository.InsertAsync(log);
             }
