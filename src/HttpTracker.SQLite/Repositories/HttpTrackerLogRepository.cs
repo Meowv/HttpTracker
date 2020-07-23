@@ -128,7 +128,7 @@ namespace HttpTracker.Repositories
 
                 var query = await Connection.QueryMultipleAsync(sql, input);
 
-                var total = await query.ReadFirstOrDefaultAsync<int>();
+                var total = await query.ReadFirstOrDefaultAsync<long>();
                 var logs = await query.ReadAsync<HttpTrackerLog>();
 
                 var list = logs.Select(x => new HttpTrackerLogDto
@@ -168,7 +168,7 @@ namespace HttpTracker.Repositories
                     CreationTime = x.CreationTime
                 }).ToList();
 
-                response.IsSuccess(new PagedList<HttpTrackerLogDto>(total, list));
+                response.IsSuccess(new PagedList<HttpTrackerLogDto>(Convert.ToInt32(total), list));
             }
 
             return response;
