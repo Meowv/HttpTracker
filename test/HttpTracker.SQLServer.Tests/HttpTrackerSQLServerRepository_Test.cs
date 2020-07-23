@@ -1,4 +1,5 @@
 ﻿using HttpTracker.Domain;
+using HttpTracker.Dto.Params;
 using HttpTracker.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -68,6 +69,29 @@ namespace HttpTracker.SQLServer.Tests
             var response = await repository.InsertAsync(log);
 
             Assert.True(response.Success);
+        }
+
+        [Fact]
+        public async Task QueryAsync()
+        {
+            var factory = Services.BuildServiceProvider().GetRequiredService<IHttpTrackerLogRepositoryFactory>();
+            var repository = factory.CreateInstance(HttpTrackerInstance.InstanceName);
+
+            Assert.NotNull(repository);
+
+            var input = new QueryInput
+            {
+                Type = "",
+                Keyword = "",
+                Page = 1,
+                Limit = 20
+            };
+
+            var response = await repository.QueryAsync(input);
+
+            Assert.True(response.Success);
+            Assert.True(response.Result.Total > 0);
+            Assert.NotEmpty(response.Result.Item);
         }
     }
 }
