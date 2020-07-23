@@ -94,7 +94,7 @@ namespace HttpTracker.Repositories
             var where = builder.ToString();
 
             var sql = $@"SELECT COUNT(1) FROM {TableName} WHERE 1 = 1 {where};
-                         SELECT `Type`, `Description`, `UserAgent`, `Method`, `Url` , `Referrer`, `IpAddress`, `Milliseconds`, `QueryString`, `RequestBody` , `Cookies`, `Headers`, `StatusCode`, `ResponseBody`, `ServerName` , `PId`, `Host`, `Port`, `ExceptionType`, `Message` , `StackTrace`, `CreationTime` FROM {TableName} WHERE 1 = 1 {where} LIMIT @Limit OFFSET @Page";
+                         SELECT `Type`, `Description`, `UserAgent`, `Method`, `Url` , `Referrer`, `IpAddress`, `Milliseconds`, `QueryString`, `RequestBody` , `Cookies`, `Headers`, `StatusCode`, `ResponseBody`, `ServerName` , `PId`, `Host`, `Port`, `ExceptionType`, `Message` , `StackTrace`, `CreationTime` FROM {TableName} WHERE 1 = 1 {where} ORDER BY CreationTime DESC LIMIT @Limit OFFSET @Page";
 
             using (Connection)
             {
