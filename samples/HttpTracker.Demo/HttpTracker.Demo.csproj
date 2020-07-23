@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HttpTracker.SQLite\HttpTracker.SQLite.csproj" />
+    <ProjectReference Include="..\..\src\HttpTracker\HttpTracker.csproj" />
+  </ItemGroup>
+
 </Project>
