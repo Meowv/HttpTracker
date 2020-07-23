@@ -56,6 +56,7 @@ namespace HttpTracker.Middleware
 
                 log = new HttpTrackerLog()
                 {
+                    Type = HttpTrackerLog.Types.Debug,
                     Description = description,
                     UserAgent = context.GetUserAgent(),
                     Method = context.GetHttpMethod(),
