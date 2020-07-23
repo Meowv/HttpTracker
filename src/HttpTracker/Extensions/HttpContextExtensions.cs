@@ -152,7 +152,7 @@ namespace HttpTracker.Extensions
 
                 result = await responseReader.ReadToEndAsync();
 
-                context.Response.Body.Seek(0, SeekOrigin.End);
+                context.Response.Body.Seek(0, SeekOrigin.Begin);
 
                 return HttpUtility.HtmlDecode(result);
             }
