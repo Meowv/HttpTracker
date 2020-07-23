@@ -52,7 +52,7 @@ namespace HttpTracker.Middleware
             {
                 await _next(context);
 
-                stopwatch.Start();
+                stopwatch.Stop();
 
                 log = new HttpTrackerLog()
                 {
@@ -110,14 +110,14 @@ namespace HttpTracker.Middleware
 
             if (endpoint != null)
             {
-                var attribute = endpoint.Metadata
-                                        .GetMetadata<ControllerActionDescriptor>()?
-                                        .MethodInfo
-                                        .GetCustomAttribute(typeof(HttpTrackerAttribute)) as HttpTrackerAttribute;
-
-                description = attribute.Description;
-
-                return attribute.Disabled;
+                if (endpoint.Metadata
+                            .GetMetadata<ControllerActionDescriptor>()?
+                            .MethodInfo
+                            .GetCustomAttribute(typeof(HttpTrackerAttribute)) is HttpTrackerAttribute attribute)
+                {
+                    description = attribute.Description;
+                    return attribute.Disabled;
+                }
             }
 
             description = null;
