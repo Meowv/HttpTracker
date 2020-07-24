@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace HttpTracker.Options
 {
@@ -11,6 +14,8 @@ namespace HttpTracker.Options
         public string Username { get; set; } = "meowv";
 
         public string Password { get; set; } = "123456";
+
+        public Func<Stream> IndexStream { get; set; } = () => typeof(HttpTrackerDashboardOptions).GetTypeInfo().Assembly.GetManifestResourceStream("HttpTracker.index.html");
 
         public HttpTrackerDashboardOptions Value => this;
     }
