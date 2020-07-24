@@ -27,7 +27,7 @@ namespace HttpTracker.Options
         /// <summary>
         /// 过滤请求
         /// </summary>
-        public string[] FilterRequest { get; set; } = { "/swagger" };
+        public string[] FilterRequest { get; set; } = { "/swagger", "/httptracker" };
 
         public HttpTrackerOptions Value => this;
     }
