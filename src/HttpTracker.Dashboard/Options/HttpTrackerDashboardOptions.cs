@@ -4,7 +4,7 @@ namespace HttpTracker.Options
 {
     public class HttpTrackerDashboardOptions : IOptions<HttpTrackerDashboardOptions>
     {
-        public string RoutePrefix { get; set; } = "httptracker";
+        public string RoutePrefix { get; set; } = "/httptracker";
 
         public string DocumentTitle { get; set; } = "HttpTracker Dashboard";
 
