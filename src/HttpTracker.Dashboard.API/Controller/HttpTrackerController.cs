@@ -19,7 +19,7 @@ namespace HttpTracker.Controller
 
         [HttpGet]
         [Route("query")]
-        public async Task<IActionResult> QueryaAsync([FromQuery] QueryInput input)
+        public async Task<IActionResult> QueryAsync([FromQuery] QueryInput input)
         {
             var repository = _factory.CreateInstance(HttpTrackerInstance.InstanceName);
 
