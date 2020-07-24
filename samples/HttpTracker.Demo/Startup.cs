@@ -21,7 +21,7 @@ namespace HttpTracker.Demo
         {
             services.AddControllers();
 
-            services.AddHttpTracker().UseSQLite();
+            services.AddHttpTracker().UseSQLite().UseHttpTrackerDashboard();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +36,6 @@ namespace HttpTracker.Demo
 
             app.UseRouting();
 
-            // 注意：需在 UseRouting() 之后
             app.UseHttpTracker();
 
             app.UseAuthorization();

@@ -1,12 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\HttpTracker.SQLite\HttpTracker.SQLite.csproj" />
     <ProjectReference Include="..\..\src\HttpTracker\HttpTracker.csproj" />
+    <ProjectReference Include="..\..\src\HttpTracker.SQLite\HttpTracker.SQLite.csproj" />
+    <ProjectReference Include="..\..\src\HttpTracker.Dashboard\HttpTracker.Dashboard.csproj" />
   </ItemGroup>
 
 </Project>

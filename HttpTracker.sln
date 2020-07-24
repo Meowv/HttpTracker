@@ -42,13 +42,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.PostgreSQL", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Oracle", "src\HttpTracker.Oracle\HttpTracker.Oracle.csproj", "{283F3B4E-18C9-4158-A733-7E8E4E62C67F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLServer.Tests", "test\HttpTracker.SQLServer.Tests\HttpTracker.SQLServer.Tests.csproj", "{BB73D999-2E78-45DB-97BE-490B76802E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.SQLServer.Tests", "test\HttpTracker.SQLServer.Tests\HttpTracker.SQLServer.Tests.csproj", "{BB73D999-2E78-45DB-97BE-490B76802E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.SQLite.Tests", "test\HttpTracker.SQLite.Tests\HttpTracker.SQLite.Tests.csproj", "{D50854B5-0796-4904-8A09-A00CE83C39EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.SQLite.Tests", "test\HttpTracker.SQLite.Tests\HttpTracker.SQLite.Tests.csproj", "{D50854B5-0796-4904-8A09-A00CE83C39EC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{D904EB73-065C-44DA-9CFE-F65B7800A56E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Demo", "samples\HttpTracker.Demo\HttpTracker.Demo.csproj", "{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Demo", "samples\HttpTracker.Demo\HttpTracker.Demo.csproj", "{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dashboard", "dashboard", "{1F450B58-329A-42AD-BA3E-8628723122C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Dashboard.API", "src\HttpTracker.Dashboard.API\HttpTracker.Dashboard.API.csproj", "{67FA8D65-5C3F-4FF1-8807-E1919BEDB917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Dashboard", "src\HttpTracker.Dashboard\HttpTracker.Dashboard.csproj", "{ADD5ED39-3141-4683-8835-A2FB0FD309AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +122,14 @@ Global
 		{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD5ED39-3141-4683-8835-A2FB0FD309AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD5ED39-3141-4683-8835-A2FB0FD309AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD5ED39-3141-4683-8835-A2FB0FD309AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD5ED39-3141-4683-8835-A2FB0FD309AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -137,6 +151,9 @@ Global
 		{BB73D999-2E78-45DB-97BE-490B76802E8B} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{D50854B5-0796-4904-8A09-A00CE83C39EC} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 		{9F31C972-9AD6-4FCC-A6A6-2EDCD59F210E} = {D904EB73-065C-44DA-9CFE-F65B7800A56E}
+		{1F450B58-329A-42AD-BA3E-8628723122C3} = {D9B3FC08-6035-4DB1-B419-5848654F4986}
+		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917} = {1F450B58-329A-42AD-BA3E-8628723122C3}
+		{ADD5ED39-3141-4683-8835-A2FB0FD309AB} = {1F450B58-329A-42AD-BA3E-8628723122C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
