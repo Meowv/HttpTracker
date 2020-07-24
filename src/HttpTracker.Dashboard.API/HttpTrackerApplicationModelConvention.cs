@@ -27,7 +27,7 @@ namespace HttpTracker
                         }
 
                         action.ApiExplorer.IsVisible = true;
-                        action.Selectors.First().AttributeRouteModel = new AttributeRouteModel(new RouteAttribute($"httptracker/api/{route}"));
+                        action.Selectors.First().AttributeRouteModel = new AttributeRouteModel(new RouteAttribute($"api/httptracker.{route}"));
                     }
                 }
             }
