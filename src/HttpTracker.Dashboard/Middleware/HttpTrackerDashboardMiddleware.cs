@@ -21,7 +21,7 @@ namespace HttpTracker.Middleware
 {
     internal class HttpTrackerDashboardMiddleware
     {
-        private const string EmbeddedFileNamespace = "HttpTracker.HttpTrackerDashboard";
+        private const string EmbeddedFileNamespace = "HttpTracker.Blazor";
 
         private readonly StaticFileMiddleware _staticFileMiddleware;
 
@@ -57,10 +57,15 @@ namespace HttpTracker.Middleware
 
         private StaticFileMiddleware CreateStaticFileMiddleware(RequestDelegate next, IHostingEnvironment hostingEnv, ILoggerFactory loggerFactory)
         {
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".dll"] = "application/octet-stream";
+            provider.Mappings[".dat"] = "application/octet-stream";
+
             var staticFileOptions = new StaticFileOptions
             {
-                RequestPath = string.IsNullOrEmpty(_options.RoutePrefix) ? string.Empty : $"/{_options.RoutePrefix}",
+                RequestPath = string.IsNullOrEmpty(_options.RoutePrefix) ? string.Empty : _options.RoutePrefix,
                 FileProvider = new EmbeddedFileProvider(typeof(HttpTrackerDashboardMiddleware).Assembly, EmbeddedFileNamespace),
+                ContentTypeProvider = provider
             };
 
             return new StaticFileMiddleware(next, hostingEnv, Microsoft.Extensions.Options.Options.Create(staticFileOptions), loggerFactory);

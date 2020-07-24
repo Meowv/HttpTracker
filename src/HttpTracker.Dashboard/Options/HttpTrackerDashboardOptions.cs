@@ -15,7 +15,7 @@ namespace HttpTracker.Options
 
         public string Password { get; set; } = "123456";
 
-        public Func<Stream> IndexStream { get; set; } = () => typeof(HttpTrackerDashboardOptions).GetTypeInfo().Assembly.GetManifestResourceStream("HttpTracker.index.html");
+        public Func<Stream> IndexStream { get; set; } = () => typeof(HttpTrackerDashboardOptions).GetTypeInfo().Assembly.GetManifestResourceStream("HttpTracker.Blazor.index.html");
 
         public HttpTrackerDashboardOptions Value => this;
     }
