@@ -9,7 +9,7 @@ namespace HttpTracker.Options
     {
         public string RoutePrefix { get; set; } = "/httptracker";
 
-        public string DocumentTitle { get; set; } = "HttpTracker Dashboard";
+        public string DocumentTitle { get; set; } = "✨ HttpTracker Dashboard";
 
         public string Username { get; set; } = "meowv";
 

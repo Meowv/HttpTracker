@@ -113,6 +113,7 @@ namespace HttpTracker.Middleware
             return new Dictionary<string, string>
             {
                 { "%(DocumentTitle)", _options.DocumentTitle },
+                { "%(BaseUrl)", string.IsNullOrEmpty(_options.RoutePrefix) ? "/": $"/{_options.RoutePrefix.Trim('/')}/" },
             };
         }
     }

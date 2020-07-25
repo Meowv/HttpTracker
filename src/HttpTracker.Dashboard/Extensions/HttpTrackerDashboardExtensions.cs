@@ -1,6 +1,7 @@
 ﻿using HttpTracker.Middleware;
 using HttpTracker.Options;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
@@ -8,10 +9,20 @@ namespace HttpTracker.Extensions
 {
     public static class HttpTrackerDashboardExtensions
     {
+        public static IHttpTrackerBuilder AddHttpTrackerDashboard(this IServiceCollection services)
+        {
+            var configuration = services.BuildServiceProvider().GetService<IConfiguration>().GetSection("HttpTracker:Dashboard");
+
+            services.AddOptions();
+            services.Configure<HttpTrackerDashboardOptions>(configuration);
+
+            return new HttpTrackerBuilder(services, configuration);
+        }
+
         public static IHttpTrackerBuilder AddHttpTrackerDashboard(this IHttpTrackerBuilder builder)
         {
             builder.Services.AddOptions();
-            builder.Services.Configure<HttpTrackerDashboardOptions>(builder.Configuration.GetSection("Storage:Dashboard"));
+            builder.Services.Configure<HttpTrackerDashboardOptions>(builder.Configuration.GetSection("Dashboard"));
 
             return builder.AddHttpTrackerDashboardService();
         }

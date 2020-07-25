@@ -45,7 +45,6 @@ namespace HttpTracker.Demo
             app.UseSwaggerUI(options =>
             {
                 options.SwaggerEndpoint($"/swagger/v1/swagger.json", "HttpTracker.Demo");
-                options.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();
