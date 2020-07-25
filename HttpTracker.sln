@@ -60,6 +60,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Dashboard.Blazo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{34E8F75C-A1D0-4D44-B931-E040CAE007E0}"
 	ProjectSection(SolutionItems) = preProject
+		build-nupkgs.ps1 = build-nupkgs.ps1
 		build-ui.ps1 = build-ui.ps1
 	EndProjectSection
 EndProject
