@@ -13,9 +13,9 @@ namespace HttpTracker.Options
 
         public bool OpenBasicAuth { get; set; } = true;
 
-        public string Username { get; set; } = "meowv";
+        public string Username { get; set; } = "httptracker";
 
-        public string Password { get; set; } = "123456";
+        public string Password { get; set; } = "httptracker";
 
         public Func<Stream> IndexStream { get; set; } = () => typeof(HttpTrackerDashboardOptions).GetTypeInfo().Assembly.GetManifestResourceStream("HttpTracker.Blazor.index.html");
 
