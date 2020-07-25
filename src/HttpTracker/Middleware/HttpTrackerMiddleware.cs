@@ -43,6 +43,14 @@ namespace HttpTracker.Middleware
             if (endpoint == null || FilterRequest(context) || DisabledRequestTracker(endpoint, out string description))
             {
                 await _next(context);
+
+                if (context.GetStatusCode() == StatusCodes.Status404NotFound)
+                {
+                    context.Response.StatusCode = StatusCodes.Status301MovedPermanently;
+                    context.Response.Headers["Location"] = "/httptracker/index.html";
+                    return;
+                }
+
                 return;
             }
 
