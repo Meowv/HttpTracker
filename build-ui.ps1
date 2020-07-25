@@ -3,7 +3,10 @@ $PublishPath = ".\src\HttpTracker.Dashboard.Blazor\publish"
 $Destination = ".\src\HttpTracker.Dashboard\Blazor"
 
 echo "***** 发布项目 *****"
-dotnet publish  $BlazorPath -p:PublishDir=publish
+dotnet publish -c Release $BlazorPath -p:PublishDir=publish
+
+echo "***** 移除旧的文件夹内容 *****"
+Remove-Item $Destination -Force -Recurse
 
 echo "***** 迁移发布文件 *****"
 Copy-Item -Path $PublishPath\wwwroot -Destination $Destination -Recurse -Force -Passthru
