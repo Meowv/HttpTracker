@@ -40,7 +40,7 @@ namespace HttpTracker.Middleware
 
             if (httpMethod == "GET" && Regex.IsMatch(path, $"^/?{Regex.Escape(_options.RoutePrefix)}/?$"))
             {
-                var relativeRedirectPath = path.EndsWith("/") ? "index.html" : $"{path.Split('/').Last()}/index.html";
+                var relativeRedirectPath = $"{path.Split('/').Last()}/index.html";
 
                 RespondWithRedirect(httpContext.Response, relativeRedirectPath);
                 return;
@@ -53,6 +53,14 @@ namespace HttpTracker.Middleware
             }
 
             await _staticFileMiddleware.Invoke(httpContext);
+
+            if (httpContext.Response.StatusCode == StatusCodes.Status404NotFound && path.Contains(_options.RoutePrefix))
+            {
+                var relativeRedirectPath = $"{_options.RoutePrefix}/index.html";
+
+                RespondWithRedirect(httpContext.Response, relativeRedirectPath);
+                return;
+            }
         }
 
         private StaticFileMiddleware CreateStaticFileMiddleware(RequestDelegate next, IHostingEnvironment hostingEnv, ILoggerFactory loggerFactory)
