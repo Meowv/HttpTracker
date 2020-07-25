@@ -17,6 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Blazor/**/*" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HttpTracker.Dashboard.API\HttpTracker.Dashboard.API.csproj" />
   </ItemGroup>
 

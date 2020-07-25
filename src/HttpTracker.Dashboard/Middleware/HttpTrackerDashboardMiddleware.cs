@@ -57,15 +57,11 @@ namespace HttpTracker.Middleware
 
         private StaticFileMiddleware CreateStaticFileMiddleware(RequestDelegate next, IHostingEnvironment hostingEnv, ILoggerFactory loggerFactory)
         {
-            var provider = new FileExtensionContentTypeProvider();
-            provider.Mappings[".dll"] = "application/octet-stream";
-            provider.Mappings[".dat"] = "application/octet-stream";
-
             var staticFileOptions = new StaticFileOptions
             {
                 RequestPath = string.IsNullOrEmpty(_options.RoutePrefix) ? string.Empty : _options.RoutePrefix,
                 FileProvider = new EmbeddedFileProvider(typeof(HttpTrackerDashboardMiddleware).Assembly, EmbeddedFileNamespace),
-                ContentTypeProvider = provider
+                ContentTypeProvider = ContentTypeProvider()
             };
 
             return new StaticFileMiddleware(next, hostingEnv, Microsoft.Extensions.Options.Options.Create(staticFileOptions), loggerFactory);
@@ -91,6 +87,17 @@ namespace HttpTracker.Middleware
             }
 
             await response.WriteAsync(htmlBuilder.ToString(), Encoding.UTF8);
+        }
+
+        private FileExtensionContentTypeProvider ContentTypeProvider()
+        {
+            var provider = new FileExtensionContentTypeProvider();
+            provider.Mappings[".dll"] = "application/octet-stream";
+            provider.Mappings[".dat"] = "application/octet-stream";
+            provider.Mappings[".pdb"] = "application/octet-stream";
+            provider.Mappings[".wasm"] = "application/wasm";
+
+            return provider;
         }
 
         private IDictionary<string, string> GetIndexArguments()
