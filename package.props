@@ -1,0 +1,23 @@
+<Project>
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>阿星Plus</Authors>
+    <Company>https://meowv.com</Company>
+    <Description>⚡ HttpTracker - Http请求跟踪器</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>https://meowv.com</Copyright>
+    <PackageProjectUrl>https://github.com/Meowv/HttpTracker</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Meowv/HttpTracker</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>httptracker;http;tracker;</PackageTags>
+    <PackageReleaseNotes>🎉 HttpTracker - Http请求跟踪器</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+</Project>
