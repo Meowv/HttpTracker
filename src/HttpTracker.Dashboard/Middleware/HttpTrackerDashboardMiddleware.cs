@@ -1,20 +1,27 @@
 ﻿using HttpTracker.Options;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-#if NETCOREAPP3_1
+#if NETSTANDARD2_0 || NETSTANDARD2_1
+
+using Microsoft.AspNetCore.Hosting;
+
+#elif NETCOREAPP3_1
+
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IWebHostEnvironment;
+
 #endif
 
 namespace HttpTracker.Middleware
@@ -37,6 +44,12 @@ namespace HttpTracker.Middleware
         {
             var httpMethod = httpContext.Request.Method;
             var path = httpContext.Request.Path.Value;
+
+            if (httpMethod == "GET" && path.Contains(_options.RoutePrefix) && !Authorize(httpContext))
+            {
+                httpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                return;
+            }
 
             if (httpMethod == "GET" && Regex.IsMatch(path, $"^/?{Regex.Escape(_options.RoutePrefix)}/?$"))
             {
@@ -115,6 +128,56 @@ namespace HttpTracker.Middleware
                 { "%(DocumentTitle)", _options.DocumentTitle },
                 { "%(BaseUrl)", string.IsNullOrEmpty(_options.RoutePrefix) ? "/": $"/{_options.RoutePrefix.Trim('/')}/" },
             };
+        }
+
+        private bool Authorize(HttpContext context)
+        {
+            if (!_options.OpenBasicAuth) return true;
+
+            var header = context.Request.Headers["Authorization"];
+
+            if (!string.IsNullOrWhiteSpace(header))
+            {
+                var authHeaderValue = AuthenticationHeaderValue.Parse(header);
+
+                if ("Basic".Equals(authHeaderValue.Scheme, StringComparison.OrdinalIgnoreCase))
+                {
+                    var parameter = Encoding.UTF8.GetString(Convert.FromBase64String(authHeaderValue.Parameter));
+
+                    var parameters = parameter.Split(':');
+
+                    if (parameters.Length > 1)
+                    {
+                        var username = parameters.First();
+                        var password = parameters.Last();
+
+                        if (!string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
+                        {
+                            return Validate(username, password);
+                        }
+                    }
+                }
+            }
+
+            return Challenge(context);
+        }
+
+        private bool Validate(string username, string password)
+        {
+            if (string.IsNullOrWhiteSpace(username))
+                throw new ArgumentNullException("username");
+
+            if (string.IsNullOrWhiteSpace(password))
+                throw new ArgumentNullException("password");
+
+            return username.Equals(_options.Username) && password.Equals(_options.Password);
+        }
+
+        private bool Challenge(HttpContext context)
+        {
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            context.Response.Headers.Append("WWW-Authenticate", "Basic realm=\"HttpTracker Dashboard\"");
+            return false;
         }
     }
 }
