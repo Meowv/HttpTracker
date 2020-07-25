@@ -56,10 +56,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Dashboard.API",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Dashboard", "src\HttpTracker.Dashboard\HttpTracker.Dashboard.csproj", "{ADD5ED39-3141-4683-8835-A2FB0FD309AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.Dashboard.Blazor", "src\HttpTracker.Dashboard.Blazor\HttpTracker.Dashboard.Blazor.csproj", "{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.Dashboard.Blazor", "src\HttpTracker.Dashboard.Blazor\HttpTracker.Dashboard.Blazor.csproj", "{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{34E8F75C-A1D0-4D44-B931-E040CAE007E0}"
 	ProjectSection(SolutionItems) = preProject
+		build-pack.ps1 = build-pack.ps1
 		build-ui.ps1 = build-ui.ps1
 	EndProjectSection
 EndProject
