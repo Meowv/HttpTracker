@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace HttpTracker.Demo
 {
@@ -21,6 +22,14 @@ namespace HttpTracker.Demo
         {
             services.AddControllers();
 
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "HttpTracker.Demo"
+                });
+            });
+
             services.AddHttpTracker().UseSQLite().AddHttpTrackerDashboard();
         }
 
@@ -32,12 +41,19 @@ namespace HttpTracker.Demo
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint($"/swagger/v1/swagger.json", "HttpTracker.Demo");
+                options.RoutePrefix = string.Empty;
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseHttpTracker();
-            
+
             app.UseHttpTrackerDashboard();
 
             app.UseAuthorization();

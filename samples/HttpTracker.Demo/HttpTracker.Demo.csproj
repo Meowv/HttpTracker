@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\HttpTracker\HttpTracker.csproj" />
     <ProjectReference Include="..\..\src\HttpTracker.SQLite\HttpTracker.SQLite.csproj" />
     <ProjectReference Include="..\..\src\HttpTracker.Dashboard\HttpTracker.Dashboard.csproj" />
