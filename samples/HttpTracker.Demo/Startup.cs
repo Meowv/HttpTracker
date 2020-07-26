@@ -30,6 +30,8 @@ namespace HttpTracker.Demo
                 });
             });
 
+            services.AddCors(option => option.AddDefaultPolicy(policy => policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
+
             services.AddHttpTracker().UseSQLite().AddHttpTrackerDashboard();
         }
 
@@ -50,6 +52,8 @@ namespace HttpTracker.Demo
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseHttpTracker();
 
