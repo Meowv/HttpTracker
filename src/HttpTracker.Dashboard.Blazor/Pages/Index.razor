@@ -1,42 +1,47 @@
-﻿@page "/index.html"
+﻿@page "/"
+@page "/index.html"
 
-<h1>Hello, world!</h1>
+<Layout Class="layout">
+    <Content>
+        <div class="top">
+            <Table Total="_total"
+                   Bordered=true
+                   Size=TableSize.Small
+                   DataSource="logs"
+                   @bind-PageIndex="_pageIndex"
+                   @bind-PageSize="_pageSize"
+                   OnPageIndexChange="async e => await fetchData(e)">
+                <Column Title="类型" @bind-Field="@context.Type"></Column>
+                <Column Title="描述" @bind-Field="@context.Description"></Column>
+                <Column Title="请求时间" @bind-Field="@context.CreationTime"></Column>
+            </Table>
+        </div>
+    </Content>
+</Layout>
 
-<a href="test">test</a>
+@code {
+    private IReadOnlyList<HttpTrackerLogDto> logs;
 
-Welcome to your new app.
+    int _pageIndex = 1;
+    int _pageSize = 20;
+    int _total = 0;
 
-<Line Data="data" Config="config" />
-
-@code{
-    object[] data = new object[] {
-        new  { year= "1991", value= 3 },
-        new  { year= "1992", value= 4 },
-        new  { year= "1993", value= 3.5 },
-        new  { year= "1994", value= 5 },
-        new  { year= "1995", value= 4.9 },
-        new  { year= "1996", value= 6 },
-        new  { year= "1997", value= 7 },
-        new  { year= "1998", value= 9 },
-        new  { year= "1999", value= 13 },
-    };
-
-    LineConfig config = new LineConfig()
+    protected override async Task OnInitializedAsync()
     {
-        Title = new Title()
-        {
-            Visible = true,
-            Text = "曲线折线图",
-        },
-        Description = new Description()
-        {
-            Visible = true,
-            Text = "用平滑的曲线代替折线。",
-        },
-        Padding = "auto",
-        ForceFit = true,
-        XField = "year",
-        YField = "value",
-        Smooth = true,
-    };
+        logs = await GetHttpTrackers(_pageIndex, _pageSize);
+    }
+
+    async Task fetchData(PaginationEventArgs args)
+    {
+        logs = await GetHttpTrackers(args.PageIndex, args.PageSize);
+    }
+
+    private async Task<IReadOnlyList<HttpTrackerLogDto>> GetHttpTrackers(int page, int limit)
+    {
+        var response = await Http.GetFromJsonAsync<HttpTrackerResponse<PagedList<HttpTrackerLogDto>>>($"/api/httptracker.query?page={page}&limit={limit}");
+
+        _total = response.Result.Total;
+
+        return response.Result.Item;
+    }
 }
