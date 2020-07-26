@@ -1,7 +1,9 @@
 <Project>
+  <Import Project="package.props"/>
+  
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0</Version>
-    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <Version>$(VersionSuffix)</Version>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
 </Project>

@@ -3,7 +3,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>阿星Plus</Authors>
     <Company>https://meowv.com</Company>
-    <Description>⚡ HttpTracker - Http请求跟踪器</Description>
+    <Description>📊 HttpTracker - Http请求跟踪器</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>https://meowv.com</Copyright>
     <PackageProjectUrl>https://github.com/Meowv/HttpTracker</PackageProjectUrl>
@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/Meowv/HttpTracker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>httptracker;http;tracker;</PackageTags>
-    <PackageReleaseNotes>🎉 HttpTracker - Http请求跟踪器</PackageReleaseNotes>
+    <PackageReleaseNotes>📊 HttpTracker - Http请求跟踪器</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

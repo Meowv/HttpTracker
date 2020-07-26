@@ -23,7 +23,7 @@ function dotnet-pack {
 }
 
 function dotnet-nuget-push {
-    dotnet nuget push nupkgs\$VersionSuffix\*.nupkg -k "" -s https://nuget.cdn.azure.cn/v3/index.json -t 360 --skip-duplicate
+    dotnet nuget push nupkgs\$VersionSuffix\*.nupkg -k "APIKEY" -s https://nuget.cdn.azure.cn/v3/index.json -t 360 --skip-duplicate
 }
 
 @( "dotnet-build", "dotnet-pack", "dotnet-nuget-push" ) | ForEach-Object {
