@@ -16,8 +16,6 @@ namespace HttpTracker
                     controller.ApiExplorer.GroupName = "HttpTrackerDashboardAPI";
                     controller.ApiExplorer.IsVisible = true;
 
-                    var a = controller.Attributes;
-
                     foreach (var action in controller.Actions)
                     {
                         var route = (action.Attributes.FirstOrDefault(x => x.GetType() == typeof(RouteAttribute)) as RouteAttribute)?.Template;
