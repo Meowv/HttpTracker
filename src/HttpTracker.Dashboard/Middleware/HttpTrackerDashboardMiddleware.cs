@@ -78,6 +78,11 @@ namespace HttpTracker.Middleware
 
         private StaticFileMiddleware CreateStaticFileMiddleware(RequestDelegate next, IHostingEnvironment hostingEnv, ILoggerFactory loggerFactory)
         {
+            if (_options.RoutePrefix == "/")
+            {
+                _options.RoutePrefix = "";
+            }
+
             var staticFileOptions = new StaticFileOptions
             {
                 RequestPath = string.IsNullOrEmpty(_options.RoutePrefix) ? string.Empty : _options.RoutePrefix,
