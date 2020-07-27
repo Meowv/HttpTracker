@@ -7,7 +7,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>https://meowv.com</Copyright>
     <PackageProjectUrl>https://github.com/Meowv/HttpTracker</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/Meowv/HttpTracker/master/logo.png</PackageIconUrl>
+    <Icon>https://raw.githubusercontent.com/Meowv/HttpTracker/master/logo.png</Icon>
     <RepositoryUrl>https://github.com/Meowv/HttpTracker</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>httptracker;http;tracker;</PackageTags>
