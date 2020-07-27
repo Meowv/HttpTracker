@@ -1,17 +1,29 @@
-$BlazorPath = Get-ChildItem -Path "src\**\*.Blazor.csproj"
-$PublishPath = ".\src\HttpTracker.Dashboard.Blazor\publish"
+$BlazorProjectPath = Get-ChildItem -Path "src\**\*.Blazor.csproj"
 $Destination = ".\src\HttpTracker.Dashboard\Blazor"
+$PublishPath = ".\src\HttpTracker.Dashboard.Blazor\publish"
 
-echo "***** 发布项目 *****"
-dotnet publish -c Release $BlazorPath -p:PublishDir=publish
+function dotnet-build {
+	dotnet build -c Release $BlazorProjectPath
+}
 
-echo "***** 移除旧的文件夹内容 *****"
-Remove-Item $Destination -Force -Recurse
+function dotnet-publish {
+	echo "***** $_ *****"
+	dotnet publish -c Release $BlazorProjectPath -p:PublishDir=publish
+}
 
-echo "***** 迁移发布文件 *****"
-Copy-Item -Path $PublishPath\wwwroot -Destination $Destination -Recurse -Force -Passthru
+function migration-file {
+	Remove-Item $Destination -Force -Recurse
 
-echo "***** 移除发布文件 *****"
-Remove-Item $PublishPath -Force -Recurse
+	Copy-Item -Path $PublishPath\wwwroot -Destination $Destination -Recurse -Force -Passthru
 
-echo "***** done *****"
+	Remove-Item $PublishPath -Force -Recurse
+}
+
+@( "dotnet-build", "dotnet-publish", "migration-file" ) | ForEach-Object {
+    echo ""
+    echo "***** $_ *****"
+    echo ""
+
+    &$_
+    if ($LastExitCode -ne 0) { Exit $LastExitCode }
+}
