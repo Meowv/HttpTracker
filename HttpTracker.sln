@@ -65,6 +65,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{34E8F75C
 		build-ui.ps1 = build-ui.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.KafkaProducer.Tests", "test\HttpTracker.KafkaProducer.Tests\HttpTracker.KafkaProducer.Tests.csproj", "{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpTracker.KafkaConsumer.Tests", "test\HttpTracker.KafkaConsumer.Tests\HttpTracker.KafkaConsumer.Tests.csproj", "{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -143,6 +147,14 @@ Global
 		{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -168,6 +180,8 @@ Global
 		{67FA8D65-5C3F-4FF1-8807-E1919BEDB917} = {1F450B58-329A-42AD-BA3E-8628723122C3}
 		{ADD5ED39-3141-4683-8835-A2FB0FD309AB} = {1F450B58-329A-42AD-BA3E-8628723122C3}
 		{AB941C9D-698E-4E14-85B6-E5D8D4C5B2D5} = {1F450B58-329A-42AD-BA3E-8628723122C3}
+		{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
+		{B3AFE086-9F0E-44A0-97A0-C9A7139397F2} = {2BD73F3E-2B02-4F3A-A0ED-053D8CCA31AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1F8DB9AC-2F1A-4CE3-B519-FF1BD2AAFD61}
