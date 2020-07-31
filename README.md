@@ -148,6 +148,8 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 然后和 `HttpTracker` 使用方式一样，分别 `AddHttpTrackerDashboard()`、`UseHttpTrackerDashboard()` 即可。
 
+仪表盘默认的访问地址是：~/httptracker，你可以在配置项中进行修改路径后缀为其他的名字，同时仪表盘的访问默认开启了 BasicAuthentication 认证，默认的账号密码为：httptracker/httptracker，如果你不想开启认证也可以手动关闭。
+
 ## 🤝 Contributing
 
 因个人能力以及时间精力有限，欢迎有兴趣的朋友们一起参与本项目的开发工作。
