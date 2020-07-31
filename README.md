@@ -12,15 +12,15 @@
 
 </div>
 
-## Introduction
+## ✨ Introduction
 
 `HttpTracker` 是一个基于`.NET Standard`的`C#`库，它是一种收集`HTTP`请求的解决方案，旨在收集我们用`.NET Core`开发的`WebApi`项目中的接口请求日志，将所有的`HTTP`请求进行拦截并保存在任意数据库中，用于后续的分析工作。
 
 `HttpTracker` 支持将数据存储在大部分主流数据库中，收集到的数据将自动以年月进行分表存储，可以选择你喜爱的任意存储方式。
 
-## Getting Started
+## 🆕 Getting Started
 
-### NuGet
+### 1️⃣ NuGet
 
 你可以运行以下下命令在你的项目中安装 `HttpTracker`。
 
@@ -38,7 +38,7 @@ Storage | Nuget| Is it done?
 `PostgreSQL` | `PM> Install-Package HttpTracker.PostgreSQL` | ❌
 `Oracle` | `PM> Install-Package HttpTracker.Oracle` | ❌
 
-### Configuration
+### 2️⃣ Configuration
 
 首先配置 `HttpTracker` 到 `Startup.cs` 文件中。
 
@@ -138,7 +138,7 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 注意将 `app.UseHttpTracker();` 放在 `app.UseRouting();` 后面使用。
 
-### Dashboard
+### 3️⃣ Dashboard
 
 `HttpTracker` 同时集成了一个仪表盘，用于将收集来的请求数据用于分析展示，Dashboard 计划采用 [Blazor](https://blazor.net/) 进行开发。
 
@@ -148,11 +148,11 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 
 然后和 `HttpTracker` 使用方式一样，分别 `AddHttpTrackerDashboard()`、`UseHttpTrackerDashboard()` 即可。
 
-## Contributing
+## 🤝 Contributing
 
 因个人能力以及时间精力有限，欢迎有兴趣的朋友们一起参与本项目的开发工作。
 
-## TODO
+## 📑 TODO
 
 - [x] HTTP请求跟踪器中间件 SDK
 - [x] 数据存储 SDK，Elasticsearch 支持
@@ -170,10 +170,10 @@ public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 - [ ] 数据存储消息队列 SDK，Kafka 支持
 - [ ] ...
 
-## Sample
+## ⚡ Sample
 
 [HttpTracker.Demo](https://github.com/Meowv/HttpTracker/tree/master/samples/HttpTracker.Demo)
 
-## License
+## ☀️ License
 
 This project is licensed under [MIT](LICENSE).
