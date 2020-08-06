@@ -65,13 +65,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{34E8F75C
 		build-ui.ps1 = build-ui.ps1
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.KafkaProducer.Tests", "test\HttpTracker.KafkaProducer.Tests\HttpTracker.KafkaProducer.Tests.csproj", "{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.KafkaProducer.Tests", "test\Kafka\HttpTracker.KafkaProducer.Tests\HttpTracker.KafkaProducer.Tests.csproj", "{6B0222C4-2D87-4623-A9CD-1533AEBAFF1A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.KafkaConsumer.Tests", "test\HttpTracker.KafkaConsumer.Tests\HttpTracker.KafkaConsumer.Tests.csproj", "{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.KafkaConsumer.Tests", "test\Kafka\HttpTracker.KafkaConsumer.Tests\HttpTracker.KafkaConsumer.Tests.csproj", "{B3AFE086-9F0E-44A0-97A0-C9A7139397F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.RabbitMQProducer.Tests", "test\HttpTracker.RabbitMQProducer.Tests\HttpTracker.RabbitMQProducer.Tests.csproj", "{8B4C27F3-9FF3-4CF1-AFE3-909FDC3A793B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.RabbitMQProducer.Tests", "test\RabbitMQ\HttpTracker.RabbitMQProducer.Tests\HttpTracker.RabbitMQProducer.Tests.csproj", "{8B4C27F3-9FF3-4CF1-AFE3-909FDC3A793B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.RabbitMQConsumer.Tests", "test\HttpTracker.RabbitMQConsumer.Tests\HttpTracker.RabbitMQConsumer.Tests.csproj", "{42C6C6E3-0488-4811-9B41-C38CF6409C3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpTracker.RabbitMQConsumer.Tests", "test\RabbitMQ\HttpTracker.RabbitMQConsumer.Tests\HttpTracker.RabbitMQConsumer.Tests.csproj", "{42C6C6E3-0488-4811-9B41-C38CF6409C3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kafka", "Kafka", "{CC4B007B-B547-4F57-B22B-4AF2C19AD763}"
 EndProject
